@@ -34,7 +34,15 @@
                                     <a class="btn btn-xs btn-default text-success mx-1 shadow" href="{{route('show', compact('articulo'))}}" title="Ver articulo">
                                         <i class="fa fa-lg fa-fw fa-eye"></i>
                                     </a>
-
+                                    <a href="" title="Agregar stock">
+                                        <i class="fas fa-fw fa-plus"></i>
+                                    </a>
+                                    <a href="" title="Egreso stock">
+                                        <i class="fas fa-fw fa-truck"></i>
+                                    </a>
+                                    <a href="" title="Corrección de stock">
+                                        <i class="fas fa-fw fa-pen"></i>
+                                    </a>
                                     
                                 </td>
                             </tr>

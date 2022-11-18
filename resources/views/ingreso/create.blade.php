@@ -86,8 +86,9 @@
                 Depósito:
                 <select class="form-select" aria-label="Default select example" name="deposito" value="{{old('deposito')}}">
                     <option selected>Seleccione el depósito</option>
-                    <option value="general">general</option>
-                    <option value="auxiliar">auxiliar</option>
+                    <option value="deposito A">depósito A</option>
+                    <option value="deposito B">depósito B</option>
+                    <option value="deposito C">depósito C</option>
                 </select>
             </label>
 

@@ -5,7 +5,7 @@
                 <input class="form-control w-full" type="text" wire:model="search" placeholder="Ingresar código"/>
             </div>
         </div>
-
+        
         @if ($articulos->count())
             <div class="card-body">
                 <table class="table table-stripped">
@@ -26,8 +26,8 @@
                                 <td>{{$articulo->codigo}}</td>
                                 <td>{{$articulo->deposito}}</td>
                                 <td style="display: flex;">
-                                    <a class="btn btn-xs btn-primary text-success mx-1 shadow" href="" title="Agregar stock">
-                                        <i class="fa-solid fa-plus"></i>
+                                    <a href="" title="Agregar stock">
+                                        <i class="fas fa-fw fa-plus"></i>
                                     </a>
 
                                     

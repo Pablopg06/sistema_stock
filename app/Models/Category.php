@@ -11,7 +11,7 @@ class Category extends Model
     protected $guarded = [];
 
     //Relacion uno a muchos
-    public function article(){
-        return $this->hasMany(Article::class);
+    public function subcategory(){
+        return $this->hasMany(SubCategory::class);
     }
 }

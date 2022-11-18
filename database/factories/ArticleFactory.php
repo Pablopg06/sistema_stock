@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\SubCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Category;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
@@ -29,8 +30,8 @@ class ArticleFactory extends Factory
             'filtro' => $this->faker->word(15),
             'marca' => $this->faker->word(15),
             'stock' => $this->faker->randomNumber(3),
-            'deposito' => $this->faker->randomElement(['general', 'auxiliar']),
-            'category_id' => Category::all()->random()->id
+            'deposito' => $this->faker->randomElement(['deposito A', 'deposito B', 'deposito C']),
+            'subcategory_id' => SubCategory::all()->random()->id
 
         ];
     }

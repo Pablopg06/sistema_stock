@@ -11,7 +11,7 @@ class Article extends Model
     protected $guarded = [];
 
     //Relacion uno a muchos inversa
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public function subcategory(){
+        return $this->belongsTo(SubCategory::class);
     }
 }

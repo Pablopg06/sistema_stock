@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoriesController as AdminCategoriesController;
 use App\Http\Controllers\Admin\IngresoController as AdminIngresoController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MovimientosController;
@@ -17,9 +18,11 @@ Route::middleware([
     
     Route::get('stock', [StockController::class,'index'])->name('stock');
 
-    Route::resource('categorias', AdminCategoriesController::class)->names('admin.categorias');
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('/categorias','index')->name('categorias.index');
+        Route::get('/categorias/categoria/{categoria}','categoria')->name('categorias.categoria');
+    });
     
-    //Route::resource('ingreso', AdminIngresoController::class)->names('admin.ingreso');
     Route::controller(IngresoController::class)->group(function(){
         Route::get('/ingreso','opciones')->name('ingreso.opciones');
         Route::get('/ingreso/manual','manual')->name('ingreso.manual');

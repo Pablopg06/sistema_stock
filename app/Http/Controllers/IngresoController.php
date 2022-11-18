@@ -27,8 +27,7 @@ class IngresoController extends Controller
         move_uploaded_file(public_path('/img/'),$filename);
         $url = env('APP_URL').'/img/'.$filename;
         $articulo->foto = $url; 
-        //$articulo->stock ++;
         $articulo->save();
-        return redirect()->route('dashboard');
+        return redirect()->route('stock');
     }
 }

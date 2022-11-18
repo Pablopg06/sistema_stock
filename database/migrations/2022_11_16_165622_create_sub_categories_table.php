@@ -13,19 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            //$table->string('slug')->default('slug');
-            $table->string('proveedor');
-            $table->unsignedBigInteger('codigo');
-            $table->string('foto');
-            $table->string('filtro')->default('ninguno');
-            $table->string('marca');
-            $table->unsignedBigInteger('stock')->default(0);
-            $table->unsignedBigInteger('stock_ideal')->default(0);
-            $table->unsignedBigInteger('stock_minimo')->default(0);
-            $table->string('deposito');
             $table->unsignedBigInteger('category_id')->default(1);
 
             $table->foreign('category_id')->references('id')->on('categories');
@@ -41,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('sub_categories');
     }
 };

@@ -317,7 +317,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Categorias',
-                    'route' => 'admin.categorias.index',
+                    'route' => 'categorias.index',
                     'icon' => 'fas fa-fw fa-tag',
                 ],
                 [
