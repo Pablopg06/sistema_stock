@@ -30,4 +30,14 @@ class IngresoController extends Controller
         $articulo->save();
         return redirect()->route('stock');
     }
+
+    public function agregar(Article $articulo){
+        return view('ingreso.agregar', compact('articulo'));
+    }
+
+    public function update(StoreArticulo $request, Article $articulo){
+        $articulo->update($request->all());
+        $articulo->save();
+        return redirect()->route('stock');
+    }
 }

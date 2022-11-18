@@ -11,4 +11,8 @@ class StockController extends Controller
         $articulos = Article::orderBy('id','asc');
         return view('stock.index',compact('articulos'));
     }
+
+    public function show(Article $articulo){
+        return view('stock.show', compact('articulo'));
+    }
 }

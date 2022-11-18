@@ -13,9 +13,18 @@ class ShowArticulos extends Component
     
     public $search;
     protected $paginationTheme = "bootstrap";
+    public $open = false;
     public function render()
     {
         $articulos = Article::where('nombre', 'LIKE' , '%' . $this->search . '%')->orderBy('id','desc')->paginate();
         return view('livewire.show-articulos', compact('articulos'));
     }
+
+    public function activar(){
+        $this->open = true;
+    }
+    public function desactivar(){
+        $this->open = false;
+    }
+
 }

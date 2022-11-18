@@ -11,10 +11,11 @@
 
 @section('content')
     
-    @foreach ($articulos as $articulo)
+    {{--@foreach ($articulos as $articulo)
             <a href="{{route('show',compact('articulo'))}}">{{$articulo->nombre}}</a>
             <br>
-    @endforeach
+    @endforeach--}}
+    @livewire('categorias.subcategoria', compact('articulos'))
     
 @stop
 

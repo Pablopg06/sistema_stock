@@ -17,6 +17,7 @@ Route::middleware([
     
     
     Route::get('stock', [StockController::class,'index'])->name('stock');
+    Route::get('show/{articulo}', [StockController::class, 'show'])->name('show');
 
     Route::controller(CategoryController::class)->group(function(){
         Route::get('/categorias','index')->name('categorias.index');
@@ -30,11 +31,12 @@ Route::middleware([
         Route::get('/ingreso/lector', 'lector')->name('ingreso.lector');
         Route::get('/ingreso/create', 'create')->name('ingreso.create');
         Route::post('/ingreso/store', 'store')->name('ingreso.store');
+        Route::get('/ingreso/agregar/{articulo}', 'agregar')->name('ingreso.agregar');
+        Route::put('/ingreso/agregar/update/{articulo}', 'update')->name('ingreso.update');
     });
         
 
     Route::get('egreso', [MovimientosController::class, 'egreso'])->name('egreso');
     Route::get('correccion', [MovimientosController::class, 'correccion'])->name('correccion');
-    Route::get('show/{articulo}', [MovimientosController::class, 'show'])->name('show');
 
 });
