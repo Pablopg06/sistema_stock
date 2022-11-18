@@ -12,7 +12,8 @@
 @section('content')
     
     @foreach ($subcategorias as $subcategoria)
-            <h1>{{$subcategoria->nombre}}</h1>
+            <a href="{{route('categorias.subcategoria',compact('subcategoria'))}}">{{$subcategoria->nombre}}</a>
+            <br>
     @endforeach
     
 @stop

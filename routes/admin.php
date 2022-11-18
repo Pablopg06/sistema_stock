@@ -21,6 +21,7 @@ Route::middleware([
     Route::controller(CategoryController::class)->group(function(){
         Route::get('/categorias','index')->name('categorias.index');
         Route::get('/categorias/categoria/{categoria}','categoria')->name('categorias.categoria');
+        Route::get('/categorias/categoria/subcategoria/{subcategoria}', 'subcategoria')->name('categorias.subcategoria');
     });
     
     Route::controller(IngresoController::class)->group(function(){
