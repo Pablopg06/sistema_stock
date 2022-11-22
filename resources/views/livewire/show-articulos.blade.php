@@ -64,7 +64,7 @@
                                     <a href="" title="Egreso stock">
                                         <i class="fas fa-fw fa-truck"></i>
                                     </a>
-                                    <a href="" title="Corrección de stock">
+                                    <a href="{{route('correccion.edit', compact('articulo'))}}" title="Corrección de stock">
                                         <i class="fas fa-fw fa-pen"></i>
                                     </a>
                                     

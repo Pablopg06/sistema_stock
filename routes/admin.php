@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoriesController as AdminCategoriesController;
 use App\Http\Controllers\Admin\IngresoController as AdminIngresoController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CorreccionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MovimientosController;
@@ -32,11 +33,16 @@ Route::middleware([
         Route::get('/ingreso/create', 'create')->name('ingreso.create');
         Route::post('/ingreso/store', 'store')->name('ingreso.store');
         Route::get('/ingreso/agregar/{articulo}', 'agregar')->name('ingreso.agregar');
-        Route::put('/ingreso/agregar/update/{articulo}', 'update')->name('ingreso.update');
+        Route::put('/ingreso/update/{articulo}', 'update')->name('ingreso.update');
     });
         
 
     Route::get('egreso', [MovimientosController::class, 'egreso'])->name('egreso');
-    Route::get('correccion', [MovimientosController::class, 'correccion'])->name('correccion');
+
+    Route::controller(CorreccionController::class)->group(function(){
+        Route::get('/correccion', 'index')->name('correccion.index');
+        Route::get('correccion/edit/{articulo}', 'edit')->name('correccion.edit');
+        Route::put('correccion/update/{articulo}', 'update')->name('correccion.update');
+    });
 
 });

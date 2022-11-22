@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'Egreso artículos')
+@section('title', 'Correccion de stock')
 
 @section('content_header')
     <h1>
         <strong>
-            Corrección de stock
+            Sección de Corrección de Stock
         </strong>
     </h1>
 @stop
 
 @section('content')
-    
+    @livewire('correccion.index')
 
 @stop
 
@@ -20,5 +20,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Correccion'); </script>
+    <script> console.log('Correccion stock!'); </script>
 @stop

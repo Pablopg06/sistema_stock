@@ -334,7 +334,6 @@ return [
             'submenu'   =>  [
                 [
                     'text' => 'Ingresos',
-                    //'route' => 'movimientos.ingreso',
                     'route' => 'ingreso.opciones',
                     'icon' => 'fas fa-fw fa-dolly',
                 ],
@@ -346,8 +345,7 @@ return [
                 ],
                 [
                     'text' => 'Corrección stock',
-                    //'route' => 'movimientos.correccion',
-                    'route' => 'correccion',
+                    'route' => 'correccion.index',
                     'icon' => 'fas fa-fw fa-store',
                 ],
             ]   
