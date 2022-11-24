@@ -7,7 +7,7 @@ use App\Http\Controllers\CorreccionController;
 use App\Http\Controllers\EgresoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngresoController;
-use App\Http\Controllers\StockController;
+use App\Http\Controllers\ArticulosController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
@@ -16,9 +16,9 @@ Route::middleware([
     'verified'
 ])->group(function () {
     
-    Route::controller(StockController::class)->group(function(){
-        Route::get('/articulos', [StockController::class,'index'])->name('articulos.index');
-        Route::get('articulos/show/{articulo}', [StockController::class, 'show'])->name('articulos.show');
+    Route::controller(ArticulosController::class)->group(function(){
+        Route::get('/articulos', 'index')->name('articulos.index');
+        Route::get('/articulos/show/{articulo}', 'show')->name('articulos.show');
     });
 
     Route::controller(CategoryController::class)->group(function(){

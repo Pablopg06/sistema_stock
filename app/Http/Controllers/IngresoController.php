@@ -31,6 +31,11 @@ class IngresoController extends Controller
         $articulo = Article::create($request->except('subcategoria', 'categoria'));
         $subcategoria = SubCategory::where('nombre', 'LIKE' , $request->subcategoria)->first();
         $articulo->subcategory_id = $subcategoria->id;
+        $file = $request->file('foto');
+        $filename = $file->getClientOriginalName();
+        move_uploaded_file(public_path('/img/'),$filename);
+        $url = env('APP_URL').'/img/'.$filename;
+        $articulo->foto = $url;
         $articulo->save();
         return redirect()->route('articulos.index');
     }

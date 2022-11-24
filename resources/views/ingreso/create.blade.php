@@ -116,11 +116,6 @@
                     <option value="{{$subcategoria->nombre}}">
                 @endforeach
             </datalist>
-
-            {{--<label class="form-label">
-                Sub Categoría:
-                <input type="text" class="form-control" name="subcategoria" value="{{old('subcategoria')}}">
-            </label>--}}
             <br>
 
 

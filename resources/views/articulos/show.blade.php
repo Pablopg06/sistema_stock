@@ -37,7 +37,7 @@
     </label>
     {{$articulo->stock}}
     <br>
-    <a class="btn btn-primary" href="{{route('stock')}}">Volver al índice de artículos</a>
+    <a class="btn btn-primary" href="{{route('articulos.index')}}">Volver al índice de artículos</a>
 
 @stop
 

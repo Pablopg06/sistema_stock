@@ -13,7 +13,7 @@
                 <table class="table table-stripped">
                     <thead>
                         <tr>
-                            {{--<th>Foto</th>--}}
+                            <th>Foto</th>
                             <th>Nombre</th>
                             <th>Unidades disponibles</th>
                             <th>Proveedor</th>
@@ -28,6 +28,7 @@
                     <tbody>
                         @foreach ($articulos as $articulo)
                             <tr>
+                                <td><img src="{{$articulo->foto}}" alt="" borde=3 height=100 width=100></td>
                                 <td>{{$articulo->nombre}}</td>
                                 <td>{{$articulo->stock}}</td>
                                 <td>{{$articulo->proveedor}}</td>
