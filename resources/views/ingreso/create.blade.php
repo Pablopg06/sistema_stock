@@ -20,11 +20,11 @@
                 <input type="text" class="form-control" name="nombre" value="{{old('nombre')}}">
             </label>
 
-            {{--@error('nombre')
+            @error('nombre')
                 <br>
                 <small>*{{$message}}</small>
                 <br> 
-            @enderror--}}
+            @enderror
             <br>
 
             <label class="form-label">
@@ -32,11 +32,11 @@
                 <input type="text" class="form-control" name="proveedor" value="{{old('proveedor')}}">
             </label>
 
-            {{--@error('proveedor')
+            @error('proveedor')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
-            @enderror--}}
+            @enderror
             <br>
 
             <label class="form-label">
@@ -44,11 +44,11 @@
                 <input type="number" class="form-control" name="codigo" value="{{old('codigo')}}">
             </label>
 
-            {{--@error('codigo')
+            @error('codigo')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
-            @enderror--}}
+            @enderror
             <br>
 
             <label class="form-label">
@@ -63,11 +63,11 @@
                 <input type="text" class="form-control" name="marca" value="{{old('marca')}}">
             </label>
 
-            {{--@error('marca')
+            @error('marca')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
-            @enderror--}}
+            @enderror
             <br>
 
             <label class="form-label">
@@ -75,11 +75,11 @@
                 <input type="number" class="form-control" name="stock" value="{{old('stock')}}">
             </label>
 
-            {{--@error('stock')
+            @error('stock')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
-            @enderror--}}
+            @enderror
             <br>
 
             <label class="form-label">
@@ -92,13 +92,37 @@
                 </select>
             </label>
 
-            {{--@error('deposito')
+            @error('deposito')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
-            @enderror--}}
+            @enderror
             <br>
+
+            <label for="Categorias" class="form-label">Categorias:</label>
+            <input class="form-control" list="opciones" id="categoria" name="categoria" placeholder="Escriba Categoría">
+            <datalist id="opciones">
+                
+                @foreach ($categorias as $categoria)
+                    <option value="{{$categoria->nombre}}">
+                @endforeach
+            </datalist>
+
+            <label for="Subcategorias" class="form-label">Sub Categorias:</label>
+            <input class="form-control" list="opciones2" id="subcategoria" name="subcategoria" placeholder="Escriba Subcategoría">
+            <datalist id="opciones2">
+                
+                @foreach ($subcategorias as $subcategoria)
+                    <option value="{{$subcategoria->nombre}}">
+                @endforeach
+            </datalist>
+
+            {{--<label class="form-label">
+                Sub Categoría:
+                <input type="text" class="form-control" name="subcategoria" value="{{old('subcategoria')}}">
+            </label>--}}
             <br>
+
 
             <button type="submit" class="btn btn-primary">Ingresar artículo</button>
             <br>

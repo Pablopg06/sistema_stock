@@ -30,6 +30,15 @@
 
         <button type="submit" class="btn btn-primary">Corregir stock</button>
         <br>
+        @error('stock')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+        @enderror
+
+        <br>
+
+        <a class="btn btn-primary" href="{{url()->previous()}}">Volver</a>
 
     </form>
 

@@ -31,16 +31,16 @@
                                 <td>{{$articulo->marca}}</td>
                                 <td>{{$articulo->deposito}}</td>
                                 <td style="display: flex;">
-                                    <a class="btn btn-xs btn-default text-success mx-1 shadow" href="{{route('show', compact('articulo'))}}" title="Ver articulo">
+                                    <a class="btn btn-xs btn-default text-success mx-1 shadow" href="{{route('articulos.show', compact('articulo'))}}" title="Ver articulo">
                                         <i class="fa fa-lg fa-fw fa-eye"></i>
                                     </a>
-                                    <a href="" title="Agregar stock">
+                                    <a href="{{route('ingreso.agregar', compact('articulo'))}}" title="Agregar stock">
                                         <i class="fas fa-fw fa-plus"></i>
                                     </a>
-                                    <a href="" title="Egreso stock">
+                                    <a href="{{route('egreso.egreso', compact('articulo'))}}" title="Egreso stock">
                                         <i class="fas fa-fw fa-truck"></i>
                                     </a>
-                                    <a href="" title="Corrección de stock">
+                                    <a href="{{route('correccion.edit', compact('articulo'))}}" title="Corrección de stock">
                                         <i class="fas fa-fw fa-pen"></i>
                                     </a>
                                     

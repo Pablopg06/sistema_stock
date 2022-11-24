@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 class CorreccionController extends Controller
 {
@@ -13,6 +16,7 @@ class CorreccionController extends Controller
     }
 
     public function edit(Article $articulo){
+        Session::put('url.intended', URL::previous());
         return view('correccion.edit', compact('articulo'));
     }
 
@@ -20,7 +24,7 @@ class CorreccionController extends Controller
         
         $articulo->update($request->all());
         $articulo->save();
-        return redirect()->back()->withInput();
+        return Redirect::intended('/');
     }
 
 }

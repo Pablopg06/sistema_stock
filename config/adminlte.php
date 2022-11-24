@@ -322,13 +322,13 @@ return [
                 ],
                 [
                     'text' => 'Articulos',
-                    'route' => 'stock',
+                    'route' => 'articulos.index',
                     'icon' => 'fas fa-fw fa-chair'
 
                 ],
             ],
         ],
-        [
+        /*[
             'text'      =>  'Movimientos',
             'icon'        => 'fas fa-fw fa-book',
             'submenu'   =>  [
@@ -349,7 +349,7 @@ return [
                     'icon' => 'fas fa-fw fa-store',
                 ],
             ]   
-        ],
+        ],*/
         ['header' => 'Administrador de Cuenta'],
         [
             'text' => 'Perfil',

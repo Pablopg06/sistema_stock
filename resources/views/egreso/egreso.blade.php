@@ -1,18 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'Agregar stock')
+@section('title', 'Egreso stock')
 
 @section('content_header')
     <h1>
         <strong>
-            Ingreso de Stock del artículo: {{$articulo->nombre}}
+            Egreso de Stock del artículo: {{$articulo->nombre}}
         </strong>
     </h1>
 @stop
 
 @section('content')
     
-    <form action="{{route('ingreso.update', compact('articulo'))}}" method="POST">
+    <form action="{{route('egreso.salida', compact('articulo'))}}" method="POST">
         @csrf
 
         <label class="form-control" >
@@ -21,12 +21,12 @@
         <br>
 
         <label class="form-control">
-            Cantidad que desea ingresar:
-            <input type="number" name="stock_ingresado">
+            Cantidad que desea egresar:
+            <input type="number" name="stock_egresado">
         </label>
         <br>
 
-        <button type="submit" class="btn btn-primary">Ingresar stock</button>
+        <button type="submit" class="btn btn-primary">Dar salida del stock</button>
         <br>
         <br>
     </form>
