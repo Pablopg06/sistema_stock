@@ -25,7 +25,7 @@
     </label>
     {{$articulo->codigo}}
     <br>
-    <img src="{{$articulo->foto}}" alt="Aqui va una imagen">
+    <img src="{{$articulo->foto}}" borde=3 width="200" height="200" alt="Aqui va una imagen">
     <br>
     <label class="form-label">
         Marca:
@@ -37,7 +37,7 @@
     </label>
     {{$articulo->stock}}
     <br>
-    <a class="btn btn-primary" href="{{route('articulos.index')}}">Volver al índice de artículos</a>
+    <a class="btn btn-primary" href="{{url()->previous()}}">Volver</a>
 
 @stop
 
