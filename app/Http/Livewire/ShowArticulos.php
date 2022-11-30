@@ -20,10 +20,11 @@ class ShowArticulos extends Component
     {
         $articulos = Article::where('nombre', 'LIKE' , '%' . $this->search . '%')
                                     ->orWhere('codigo', 'LIKE', '%' . $this->search . '%')
-                                    ->orderBy('id', 'desc')->paginate();
+                                    ->orderBy('id', 'desc')->paginate(6);
         $subcategorias = SubCategory::all();
         $categorias = Category::all();
-        return view('livewire.show-articulos', compact('articulos', 'subcategorias', 'categorias'));
+        $alertas = Article::where('stock', '<', 5)->get();
+        return view('livewire.show-articulos', compact('articulos', 'subcategorias', 'categorias', 'alertas'));
     }
 
     public function activar(){

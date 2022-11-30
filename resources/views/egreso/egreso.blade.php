@@ -26,6 +26,12 @@
         </label>
         <br>
 
+        @error('stock_egresado')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+        @enderror
+
         <button type="submit" class="btn btn-primary">Dar salida del stock</button>
         <br>
         <br>

@@ -18,6 +18,12 @@ class EgresoController extends Controller
     public function salida(Request $request, Article $articulo){
 
         $articulo->stock -= $request->stock_egresado;
+        /*if ($articulo->stock < 5) {
+            
+        } else {
+            # code...
+        }*/
+        
         $articulo->save();
         return Redirect::intended('/');
     }

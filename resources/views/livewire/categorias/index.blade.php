@@ -9,9 +9,10 @@
         <div class="row">
             @foreach ($categorias as $categoria)
                 <div class="col">
-                    <img src="{{$categoria->imagen}}" width="100" height="100" alt="Aqui va una imagen">
                     <br>
-                    <a class="btn btn-primary" href="{{route('categorias.categoria', compact('categoria'))}}">{{$categoria->nombre}}</a>
+                    <img src="{{$categoria->imagen}}" width="150" height="150" alt="Aqui va una imagen">
+                    <br>
+                    <a class="btn btn-primary" style="text-center display:flex" href="{{route('categorias.categoria', compact('categoria'))}}">{{$categoria->nombre}}</a>
                 </div>
             @endforeach
         </div>

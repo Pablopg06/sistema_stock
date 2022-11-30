@@ -1,12 +1,21 @@
 <div>
     <div class="card">
         <div class="card-header">
-            {{--<div class="px-6 py-4">
+
+            @if ($alertas->count())
+                @foreach ($alertas as $alerta)
+                    <div class="alert alert-danger" role="alert">
+                        El artículo {{$alerta->nombre}} necesita reposición de stock
+                    </div>
+                @endforeach
+            @endif
+
+            <div class="px-6 py-4">
                 <input class="form-control w-full" type="text" wire:model="search" placeholder="Busque artículo"/>
-            </div>--}}
+            </div>
         </div>
 
-        @if ($articulos->count())
+        @if ($articles->count())
             <div class="card-body">
                 <table class="table table-stripped">
                     <thead>
@@ -22,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($articulos as $articulo)
+                        @foreach ($articles as $articulo)
                             <tr>
                                 <td><img src="{{$articulo->foto}}" alt="" borde=3 height=100 width=100></td>
                                 <td>{{$articulo->nombre}}</td>
@@ -53,8 +62,8 @@
                 </table>
 
             </div>
-            <div class="card-foot">
-                
+            <div class="card-footer">
+                <a class="btn btn-primary" href="{{route('categorias.volver')}}">Volver a subcategorías</a>
             </div>
         @else
             <strong>No se encontró ningún artículo</strong>

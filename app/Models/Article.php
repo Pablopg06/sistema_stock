@@ -14,4 +14,9 @@ class Article extends Model
     public function subcategory(){
         return $this->belongsTo(SubCategory::class);
     }
+
+    //Relación muchos a muchos
+    public function store(){
+        return $this->belongsToMany('App\Models\Store');
+    }
 }

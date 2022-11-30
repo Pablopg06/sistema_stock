@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Article;
+use App\Models\Store;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ArticleSeeder extends Seeder
+class StoreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        Article::factory(200)->create();
+        Store::factory(3)->create();
     }
 }

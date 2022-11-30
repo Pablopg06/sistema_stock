@@ -17,9 +17,9 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $nombre = $this->faker->unique()->randomElement(['audio y video','belleza y salud',
-        'colchoneria','computacion','computacion', 'deportes y jardin', 'electrohogar',
-        'herramientas', 'muebles','niños', 'oficina']);
+        $nombre = $this->faker->unique->randomElement(['Audio y Video','Belleza y Salud',
+        'Colchonería','Computación', 'Deportes y Jardín', 'Electrohogar',
+        'Herramientas', 'Muebles','Niños', 'Oficina']);
         return [
             'nombre' => $nombre,
             //'slug' => Str::slug($nombre),

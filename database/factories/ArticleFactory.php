@@ -19,7 +19,7 @@ class ArticleFactory extends Factory
      */
     public function definition()
     {
-        $nombre = $this->faker->unique()->word(15);
+        $nombre = $this->faker->word(15);
         return [
             'nombre' => $nombre,
             //'slug' => Str::slug($nombre),

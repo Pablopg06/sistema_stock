@@ -10,11 +10,28 @@
 @stop
 
 @section('content')
-    
-    @foreach ($subcategorias as $subcategoria)
-            <a href="{{route('categorias.subcategoria',compact('subcategoria'))}}">{{$subcategoria->nombre}}</a>
-            <br>
-    @endforeach
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th>Subcategorías disponibles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($subcategorias as $subcategoria)
+                        <tr>
+                            <td>
+                                <a href="{{route('categorias.subcategoria',compact('subcategoria'))}}">{{$subcategoria->nombre}}</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a class="btn btn-primary" href="{{route('categorias.index')}}">Volver</a>
     
 @stop
 

@@ -2,6 +2,15 @@
     <a class="btn btn-danger" href="{{route('ingreso.create')}}">Ingresar nuevo artículo</a>
     <div class="card">
         <div class="card-header">
+
+            @if ($alertas->count())
+                @foreach ($alertas as $alerta)
+                    <div class="alert alert-danger" role="alert">
+                        El artículo {{$alerta->nombre}} necesita reposición de stock
+                    </div>
+                @endforeach
+            @endif
+
             <div class="px-6 py-4">
                 <input class="form-control w-full" type="text" wire:model="search" placeholder="Ingrese el nombre o el código del artículo"/>
             </div>
