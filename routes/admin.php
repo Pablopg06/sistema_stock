@@ -34,7 +34,7 @@ Route::middleware([
         //Subcategoría seleccionada
         Route::get('/categorias/categoria/subcategoria/{categoria}/{subcategoria}', 'subcategoria')->name('categorias.subcategoria');
         Route::delete('/categorias/categoria/borrar/subcategoria/{categoria}/{subcategoria}', 'borrar_sub')->name('categorias.borrar_sub');
-        Route::get('/categorias/volver', 'volver')->name('categorias.volver');
+        Route::put('/categorias/volver', 'volver')->name('categorias.volver');
         
     });
     

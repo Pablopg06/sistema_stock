@@ -10,6 +10,8 @@ class Subcategoria extends Component
 {
     use WithPagination;
     public $search;
+    public $categoria;
+    public $subcategoria; 
     public $articulos;
 
     protected $paginationTheme = "bootstrap";
@@ -18,6 +20,8 @@ class Subcategoria extends Component
     {
         $articles = $this->articulos->intersect(Article::where('nombre', 'LIKE', '%' . $this->search . '%')->orderBy('id', 'desc')->get());
         $alertas = $this->articulos->intersect(Article::where('stock', '<', 5)->get());
-        return view('livewire.categorias.subcategoria', compact('articles', 'alertas'));
+        $categoria = $this->categoria->get();
+        $subcategoria = $this->subcategoria->get();
+        return view('livewire.categorias.subcategoria', compact('articles', 'alertas','categoria','subcategoria'));
     }
 }

@@ -67,5 +67,5 @@
         @endif
         
     </div>
-    <a class="btn btn-primary" href="{{route('categorias.volver')}}">Volver a subcategorías</a>
+    <a class="btn btn-primary" href="{{route('categorias.categoria', compact('categoria', 'subcategoria'))}}">Volver a subcategorías</a>
 </div>

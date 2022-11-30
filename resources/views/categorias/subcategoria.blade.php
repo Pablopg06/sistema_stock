@@ -20,7 +20,7 @@
 
 @section('content')
     
-    @livewire('categorias.subcategoria', compact('articulos'))
+    @livewire('categorias.subcategoria', compact('categoria', 'subcategoria', 'articulos'))
     
 @stop
 
