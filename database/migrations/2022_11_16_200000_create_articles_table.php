@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('deposito')->default('');
             $table->unsignedBigInteger('subcategory_id')->default(1);
 
-            $table->foreign('subcategory_id')->references('id')->on('sub_categories');
+            $table->foreign('subcategory_id')->references('id')->on('sub_categories')->onDelete('cascade');
 
             $table->timestamps();
         });

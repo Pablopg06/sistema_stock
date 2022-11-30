@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoria;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -30,5 +31,20 @@ class CategoryController extends Controller
 
     public function volver(){
         return Redirect::intended('/');
+    }
+
+    public function create(){
+        return view('categorias.create');
+    }
+
+    public function store(StoreCategoria $request){
+        $categoria = Category::create($request->all());
+        $file = $request->file('imagen');
+        $filename = $file->getClientOriginalName();
+        move_uploaded_file(public_path('/img/'),$filename);
+        $url = env('APP_URL').'/img/'.$filename;
+        $categoria->imagen = $url;
+        $categoria->save();
+        return redirect()->route('categorias.index');
     }
 }

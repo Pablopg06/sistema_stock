@@ -99,7 +99,7 @@
             @enderror
             <br>
 
-            <label for="Categorias" class="form-label">Categorias:</label>
+            <label for="Categorias" class="form-label">Categoría:</label>
             <input class="form-control" list="opciones" id="categoria" name="categoria" placeholder="Escriba Categoría">
             <datalist id="opciones">
                 
@@ -108,7 +108,14 @@
                 @endforeach
             </datalist>
 
-            <label for="Subcategorias" class="form-label">Sub Categorias:</label>
+            @error('categoria')
+                <br>
+                <small>*{{$message}}</small>
+                <br>
+            @enderror
+            <br>
+
+            <label for="Subcategorias" class="form-label">Sub Categoría:</label>
             <input class="form-control" list="opciones2" id="subcategoria" name="subcategoria" placeholder="Escriba Subcategoría">
             <datalist id="opciones2">
                 
@@ -116,8 +123,13 @@
                     <option value="{{$subcategoria->nombre}}">
                 @endforeach
             </datalist>
-            <br>
 
+            @error('subcategoria')
+                <br>
+                <small>*{{$message}}</small>
+                <br>
+            @enderror
+            <br>
 
             <button type="submit" class="btn btn-primary">Ingresar artículo</button>
             <br>

@@ -27,7 +27,8 @@ class IngresoController extends Controller
        return view('ingreso.create', compact('categorias', 'subcategorias'));
     }
 
-    public function store(Request $request){
+    public function store(StoreArticulo $request){
+
         $articulo = Article::create($request->except('subcategoria', 'categoria'));
         $subcategoria = SubCategory::where('nombre', 'LIKE' , $request->subcategoria)->first();
         $articulo->subcategory_id = $subcategoria->id;

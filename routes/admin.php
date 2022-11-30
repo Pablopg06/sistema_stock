@@ -26,6 +26,9 @@ Route::middleware([
         Route::get('/categorias/categoria/{categoria}','categoria')->name('categorias.categoria');
         Route::get('/categorias/categoria/subcategoria/{subcategoria}', 'subcategoria')->name('categorias.subcategoria');
         Route::get('/categorias/volver', 'volver')->name('categorias.volver');
+        Route::get('/categorias/create', 'create')->name('categorias.create');
+        Route::post('/categorias/store', 'store')->name('categorias.store');
+        
     });
     
     Route::controller(IngresoController::class)->group(function(){

@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-    <p>Estas son las categorías disponibles</p>
+    
     @livewire('categorias.index')
 
 @stop

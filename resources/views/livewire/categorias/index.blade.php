@@ -1,10 +1,6 @@
 <div>
-    {{--<div class="w-25 grid grid-cols-3 gap-6" style="display: grid; grid-template-columns; repeat(3,1fr); flex">
-        @foreach ($categorias as $categoria)
-            <img src="{{$categoria->imagen}}" class="img-fluid rounded" alt="Aqui va una imagen">
-            <a class="btn btn-primary" href="{{route('categorias.categoria', compact('categoria'))}}">{{$categoria->nombre}}</a>
-        @endforeach
-    </div>--}}
+    <a class="btn btn-danger" href="{{route('categorias.create')}}">Crear nueva Categoría</a>
+    <p>Estas son las categorías disponibles</p>
     <div class="container text-center">
         <div class="row">
             @foreach ($categorias as $categoria)
