@@ -17,7 +17,7 @@ class Subcategoria extends Component
     public function render()
     {
         $articles = $this->articulos->intersect(Article::where('nombre', 'LIKE', '%' . $this->search . '%')->orderBy('id', 'desc')->get());
-        $alertas = Article::where('stock', '<', 5)->get();
+        $alertas = $this->articulos->intersect(Article::where('stock', '<', 5)->get());
         return view('livewire.categorias.subcategoria', compact('articles', 'alertas'));
     }
 }

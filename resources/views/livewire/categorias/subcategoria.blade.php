@@ -62,11 +62,10 @@
                 </table>
 
             </div>
-            <div class="card-footer">
-                <a class="btn btn-primary" href="{{route('categorias.volver')}}">Volver a subcategorías</a>
-            </div>
         @else
             <strong>No se encontró ningún artículo</strong>
         @endif
+        
     </div>
+    <a class="btn btn-primary" href="{{route('categorias.volver')}}">Volver a subcategorías</a>
 </div>

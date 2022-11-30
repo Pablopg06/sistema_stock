@@ -8,6 +8,7 @@ use App\Http\Controllers\EgresoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\ArticulosController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
@@ -23,11 +24,17 @@ Route::middleware([
 
     Route::controller(CategoryController::class)->group(function(){
         Route::get('/categorias','index')->name('categorias.index');
+        Route::get('/categorias/crear', 'create')->name('categorias.create');
+        Route::post('/categorias/guardar', 'store')->name('categorias.store');
+        //Categoría seleccionada
         Route::get('/categorias/categoria/{categoria}','categoria')->name('categorias.categoria');
-        Route::get('/categorias/categoria/subcategoria/{subcategoria}', 'subcategoria')->name('categorias.subcategoria');
+        Route::delete('/categorias/categoria/borrar/{categoria}', 'destroy')->name('categorias.destroy');
+        Route::get('/categorias/categoria/crear/subcategoria/{categoria}', 'crear_sub')->name('categorias.crear_sub');
+        Route::post('/categorias/categoria/crear/subcategoria/guardar/{categoria}', 'guardar_sub')->name('categorias.guardar_sub');
+        //Subcategoría seleccionada
+        Route::get('/categorias/categoria/subcategoria/{categoria}/{subcategoria}', 'subcategoria')->name('categorias.subcategoria');
+        Route::delete('/categorias/categoria/borrar/subcategoria/{categoria}/{subcategoria}', 'borrar_sub')->name('categorias.borrar_sub');
         Route::get('/categorias/volver', 'volver')->name('categorias.volver');
-        Route::get('/categorias/create', 'create')->name('categorias.create');
-        Route::post('/categorias/store', 'store')->name('categorias.store');
         
     });
     

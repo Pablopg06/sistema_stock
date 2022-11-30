@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoria;
+use App\Http\Requests\StoreSubCategoria;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -23,10 +24,10 @@ class CategoryController extends Controller
         return view('categorias.categoria',compact('subcategorias', 'categoria'));
     }
 
-    public function subcategoria(SubCategory $subcategoria){
+    public function subcategoria(Category $categoria, SubCategory $subcategoria){
         Session::put('url.intended', URL::previous());
         $articulos = Article::where('subcategory_id', $subcategoria->id)->get();
-        return view('categorias.subcategoria', compact('articulos', 'subcategoria'));
+        return view('categorias.subcategoria', compact('categoria', 'subcategoria', 'articulos'));
     }
 
     public function volver(){
@@ -46,5 +47,26 @@ class CategoryController extends Controller
         $categoria->imagen = $url;
         $categoria->save();
         return redirect()->route('categorias.index');
+    }
+
+    public function destroy(Category $categoria){
+        $categoria->delete();
+        return redirect()->route('categorias.index');
+    }
+
+    public function crear_sub(Category $categoria){
+        return view('categorias.crearsub', compact('categoria'));
+    }
+
+    public function guardar_sub(StoreSubCategoria $request, Category $categoria){
+        $subcategoria = SubCategory::create($request->all());
+        $subcategoria->category_id = $categoria->id;
+        $subcategoria->save();
+        return redirect()->route('categorias.categoria', compact('categoria'));
+    }
+
+    public function borrar_sub(Category $categoria, SubCategory $subcategoria){
+        $subcategoria->delete();
+        return redirect()->route('categorias.categoria', compact('categoria'));
     }
 }
