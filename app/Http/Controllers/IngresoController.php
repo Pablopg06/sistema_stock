@@ -21,16 +21,26 @@ class IngresoController extends Controller
         return view('ingreso.manual');
     }
 
-    public function create(){
-        $categorias = Category::all();
-        $subcategorias = SubCategory::all();
-       return view('ingreso.create', compact('categorias', 'subcategorias'));
+    public function create(Category $categoria = null, SubCategory $subcategoria = null){
+        
+        if((!$categoria) && (!$subcategoria)){
+            
+            $categorias = Category::all();
+            $subcategorias = SubCategory::all();
+            
+            return view('ingreso.create', compact('categorias', 'subcategorias'));
+        }else{
+            $categorias = $categoria;
+            $subcategorias = $subcategoria;
+            
+            return view('ingreso.create', compact('categorias', 'subcategorias'));
+        }
+        
     }
 
     public function store(StoreArticulo $request){
-
-        $articulo = Article::create($request->except('subcategoria', 'categoria'));
-        $subcategoria = SubCategory::where('nombre', 'LIKE' , $request->subcategoria)->first();
+        $articulo = Article::create($request->except('subcategoria', 'categoria','volver'));
+        $subcategoria = SubCategory::where('nombre', $request->subcategoria)->first();
         $articulo->subcategory_id = $subcategoria->id;
         $file = $request->file('foto');
         $filename = $file->getClientOriginalName();
@@ -38,7 +48,13 @@ class IngresoController extends Controller
         $url = env('APP_URL').'/img/'.$filename;
         $articulo->foto = $url;
         $articulo->save();
-        return redirect()->route('articulos.index');
+        if($request->volver){
+            $categoria = Category::where('nombre', 'LIKE', $request->categoria)->first();
+            return redirect()->route('categorias.subcategoria', compact('categoria', 'subcategoria'));
+        }else{
+            return redirect()->route('articulos.index');
+        }
+        
     }
 
     public function agregar(Article $articulo){

@@ -30,9 +30,11 @@ class StoreArticulo extends FormRequest
             'foto'=>'required',
             'marca'=>'required|max:20',
             'stock'=>'required',
+            'stock_minimo'=>'required',
             'deposito'=>'required',
             'categoria'=>'required',
-            'subcategoria'=>'required'
+            'subcategoria'=>'required',
+            'volver'
         ];
     }
 }

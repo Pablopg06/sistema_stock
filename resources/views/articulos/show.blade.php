@@ -37,6 +37,11 @@
     </label>
     {{$articulo->stock}}
     <br>
+    <label class="form-label">
+        Stock Mínimo:
+    </label>
+    {{$articulo->stock_minimo}}
+    <br>
     <a class="btn btn-primary" href="{{url()->previous()}}">Volver</a>
 
 @stop

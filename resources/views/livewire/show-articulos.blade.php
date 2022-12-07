@@ -1,15 +1,18 @@
 <div>
-    <a class="btn btn-danger" href="{{route('ingreso.create')}}">Ingresar nuevo artículo</a>
+    <a class="btn btn-primary" href="{{route('ingreso.create')}}">
+        Ingresar nuevo artículo
+        <i class="fas fa-fw fa-plus"></i>
+    </a>
     <div class="card">
         <div class="card-header">
 
             @if ($alertas->count())
-                @foreach ($alertas as $alerta)
-                    <div class="alert alert-danger" role="alert">
-                        El artículo {{$alerta->nombre}} necesita reposición de stock
-                    </div>
-                @endforeach
+                <div class="alert alert-danger" role="alert">
+                    Hay artículos que necesitan reposición de stock
+                    <a class="btn btn-light text-dark" href="{{route('articulos.reposicion')}}">Ver artículos</a>
+                </div>
             @endif
+            
 
             <div class="px-6 py-4">
                 <input class="form-control w-full" type="text" wire:model="search" placeholder="Ingrese el nombre o el código del artículo"/>
@@ -21,7 +24,7 @@
             <div class="card-body">
                 <table class="table table-stripped">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>Foto</th>
                             <th>Nombre</th>
                             <th>Unidades disponibles</th>
@@ -51,21 +54,30 @@
                                 <td>{{$categoria->nombre}}</td>
                                 <td>{{$subcategoria->nombre}}</td>
                                 <td style="display: flex;">
-                                    <a class="btn btn-xs btn-default text-success mx-1 shadow" href="{{route('articulos.show', compact('articulo'))}}" title="Ver articulo">
-                                        <i class="fa fa-lg fa-fw fa-eye"></i>
+                                    <a class="mx-1" href="{{route('articulos.show', compact('articulo'))}}" title="Ver articulo">
+                                        {{--<i class="fa fa-lg fa-fw fa-eye"></i>--}}
+                                        <i class="fas fa-fw fa-info"></i>
                                     </a>
 
-                                    <a href="{{route('ingreso.agregar', compact('articulo'))}}" title="Agregar stock">
+                                    <a class="mx-1" href="{{route('ingreso.agregar', compact('articulo'))}}" title="Agregar stock">
                                         <i class="fas fa-fw fa-plus"></i>
                                     </a>
                                     
-                                    <a href="{{route('egreso.egreso', compact('articulo'))}}" title="Egreso stock">
+                                    <a class="mx-1" href="{{route('egreso.egreso', compact('articulo'))}}" title="Egreso stock">
                                         <i class="fas fa-fw fa-truck"></i>
                                     </a>
 
-                                    <a href="{{route('correccion.edit', compact('articulo'))}}" title="Corrección de stock">
+                                    <a class="mx-1" href="{{route('correccion.edit', compact('articulo'))}}" title="Corrección de stock">
                                         <i class="fas fa-fw fa-pen"></i>
                                     </a>
+
+                                    <form action="{{route('articulos.destroy', $articulo)}}" class="formulario-borrar" method="POST" title="Borrar artículo">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-xs text-danger" type="submit">
+                                            <i class="fa fa-lg fa-fw fa-trash"></i>
+                                        </button>
+                                    </form>
                                     
                                 </td>
                             </tr>

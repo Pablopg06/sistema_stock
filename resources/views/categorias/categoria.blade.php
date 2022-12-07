@@ -11,12 +11,16 @@
         @method('delete')
         <button class="btn btn-danger" type="submit">
             Eliminar Categoría
+            <i class="fas fa-fw fa-trash"></i>
         </button>
     </form>
     <br>
     <h3>Subcategorías</h2>
     <br>
-    <a class="btn btn-danger" href="{{route('categorias.crear_sub', compact('categoria'))}}">Crear nueva Sub Categoría</a>
+    <a class="btn btn-primary" href="{{route('categorias.crear_sub', compact('categoria'))}}">
+        Crear nueva Sub Categoría
+        <i class="fas fa-fw fa-plus"></i>
+    </a>
 @stop
 
 @section('content')
@@ -58,7 +62,7 @@
             e.preventDefault();
             Swal.fire({
                 title: '¿Está seguro de querer eliminar esta Categoría?',
-                text: "Es recomendable verificar primer que las subcategorías y artículos no tengan stock vigente",
+                text: "Es recomendable verificar primero que las subcategorías y artículos no tengan stock vigente",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',

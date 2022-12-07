@@ -20,6 +20,8 @@ Route::middleware([
     Route::controller(ArticulosController::class)->group(function(){
         Route::get('/articulos', 'index')->name('articulos.index');
         Route::get('/articulos/show/{articulo}', 'show')->name('articulos.show');
+        Route::get('/articulos/reposicion/{subcategoria?}', 'reposicion')->name('articulos.reposicion');
+        Route::delete('/articulos/borrar/{articulo}/{subcategoria?}', 'destroy')->name('articulos.destroy');
     });
 
     Route::controller(CategoryController::class)->group(function(){
@@ -42,8 +44,8 @@ Route::middleware([
         Route::get('/ingreso','opciones')->name('ingreso.opciones');
         Route::get('/ingreso/manual','manual')->name('ingreso.manual');
         Route::get('/ingreso/lector', 'lector')->name('ingreso.lector');
-        Route::get('/ingreso/create', 'create')->name('ingreso.create');
-        Route::post('/ingreso/store', 'store')->name('ingreso.store');
+        Route::get('/ingreso/create/{categoria?}/{subcategoria?}', 'create')->name('ingreso.create');
+        Route::post('/ingreso/store/', 'store')->name('ingreso.store');
         Route::get('/ingreso/agregar/{articulo}', 'agregar')->name('ingreso.agregar');
         Route::post('/ingreso/update/{articulo}', 'update')->name('ingreso.update');
     });

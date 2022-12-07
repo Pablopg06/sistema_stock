@@ -1,5 +1,8 @@
 <div>
-    <a class="btn btn-danger" href="{{route('categorias.create')}}">Crear nueva Categoría</a>
+    <a class="btn btn-primary" href="{{route('categorias.create')}}">
+        Crear nueva Categoría
+        <i class="fas fa-fw fa-plus"></i>
+    </a>
     <p>Estas son las categorías disponibles</p>
     <div class="container text-center">
         <div class="row">

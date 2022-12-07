@@ -4,11 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Article extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
     protected $guarded = [];
+
+    public function toSearchableArray()
+    {
+        return [
+            'nombre' => $this->nombre,
+            'codigo' => $this->codigo,
+            'proveedor' => $this->proveedor
+        ];
+    }
+
 
     //Relacion uno a muchos inversa
     public function subcategory(){

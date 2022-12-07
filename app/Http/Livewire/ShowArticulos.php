@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\SubCategory;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -18,12 +19,12 @@ class ShowArticulos extends Component
     public $open = false;
     public function render()
     {
-        $articulos = Article::where('nombre', 'LIKE' , '%' . $this->search . '%')
-                                    ->orWhere('codigo', 'LIKE', '%' . $this->search . '%')
-                                    ->orderBy('id', 'desc')->paginate(6);
+        
+        $articulos = Article::search($this->search)->orderBy('id', 'desc')->paginate(6);
         $subcategorias = SubCategory::all();
         $categorias = Category::all();
-        $alertas = Article::where('stock', '<', 5)->get();
+        $alertas = Article::all()->filter(fn ($articulo, $key)=>$articulo->stock < $articulo->stock_minimo);
+        
         return view('livewire.show-articulos', compact('articulos', 'subcategorias', 'categorias', 'alertas'));
     }
 
