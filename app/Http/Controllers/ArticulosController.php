@@ -41,4 +41,52 @@ class ArticulosController extends Controller
         }
 
     }
+
+    public function cambio(Article $articulo, SubCategory $subcategoria = null){
+        return view('articulos.cambio', compact('articulo', 'subcategoria'));
+    }
+
+    public function deposito(Request $request, Article $articulo){
+
+        if($articulo->stock == $request->stock_enviar){
+
+            $articulo->deposito = $request->deposito;
+            $articulo->save();
+            
+        }elseif($request->stock_enviar < $articulo->stock){
+            
+            $articulo->stock -= $request->stock_enviar;
+            $articulo->save();
+            $aux1 = Article::where('nombre', 'LIKE', $articulo->nombre)->get();
+            $aux2 = Article::where('proveedor', 'LIKE', $articulo->proveedor)->get();
+            $aux3 = Article::where('marca', 'LIKE', $articulo->marca)->get();
+            $aux4 = Article::where('deposito', 'LIKE', $request->deposito)->get();
+            $aux5 = $aux1->intersect($aux2);
+            $aux6 = $aux5->intersect($aux3);
+            $article = $aux6->intersect($aux4);
+            if ($article->isEmpty()) {
+                
+                $articulo2 = $articulo->replicate()->fill([
+                    'deposito' => $request->deposito,
+                    'stock' => $request->stock_enviar
+                ]);
+                $articulo2->save();
+            }else{
+                
+                $articulo2 = $article->first();
+                $articulo2->stock += $request->stock_enviar;
+                $articulo2->save();
+            }
+            
+        }
+
+        if($request->volver){
+            $subcategoria = SubCategory::where('id', $articulo->subcategory_id)->first();
+            $categoria = Category::where('id', $subcategoria->category_id)->first();
+            return redirect()->route('categorias.subcategoria', compact('categoria', 'subcategoria'));
+        }else{
+            return redirect()->route('articulos.index');
+        }
+
+    }
 }

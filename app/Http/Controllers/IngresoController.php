@@ -13,13 +13,6 @@ use Illuminate\Support\Facades\URL;
 
 class IngresoController extends Controller
 {
-    public function opciones(){
-        return view('movimientos.ingreso');
-    }
-
-    public function manual(){
-        return view('ingreso.manual');
-    }
 
     public function create(Category $categoria = null, SubCategory $subcategoria = null){
         
@@ -48,6 +41,7 @@ class IngresoController extends Controller
         $url = env('APP_URL').'/img/'.$filename;
         $articulo->foto = $url;
         $articulo->save();
+        
         if($request->volver){
             $categoria = Category::where('nombre', 'LIKE', $request->categoria)->first();
             return redirect()->route('categorias.subcategoria', compact('categoria', 'subcategoria'));

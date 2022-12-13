@@ -22,6 +22,8 @@ Route::middleware([
         Route::get('/articulos/show/{articulo}', 'show')->name('articulos.show');
         Route::get('/articulos/reposicion/{subcategoria?}', 'reposicion')->name('articulos.reposicion');
         Route::delete('/articulos/borrar/{articulo}/{subcategoria?}', 'destroy')->name('articulos.destroy');
+        Route::get('articulos/cambio-deposito/{articulo}/{subcategoria?}', 'cambio')->name('articulos.cambio');
+        Route::post('articulos/deposito/{articulo}', 'deposito')->name('articulos.deposito');
     });
 
     Route::controller(CategoryController::class)->group(function(){
@@ -47,7 +49,7 @@ Route::middleware([
         Route::get('/ingreso/create/{categoria?}/{subcategoria?}', 'create')->name('ingreso.create');
         Route::post('/ingreso/store/', 'store')->name('ingreso.store');
         Route::get('/ingreso/agregar/{articulo}', 'agregar')->name('ingreso.agregar');
-        Route::post('/ingreso/update/{articulo}', 'update')->name('ingreso.update');
+        Route::post('/ingreso/actualizar/{articulo}', 'update')->name('ingreso.update');
     });
         
     Route::controller(EgresoController::class)->group(function(){
@@ -57,8 +59,8 @@ Route::middleware([
 
     Route::controller(CorreccionController::class)->group(function(){
         Route::get('/correccion', 'index')->name('correccion.index');
-        Route::get('/correccion/edit/{articulo}', 'edit')->name('correccion.edit');
-        Route::put('/correccion/update/{articulo}', 'update')->name('correccion.update');
+        Route::get('/correccion/editar/{articulo}', 'edit')->name('correccion.edit');
+        Route::put('/correccion/actualizar/{articulo}', 'update')->name('correccion.update');
     });
 
 });

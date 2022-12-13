@@ -58,6 +58,10 @@
                                         <i class="fas fa-fw fa-pen"></i>
                                     </a>
 
+                                    <a class="mx-1" href="{{route('articulos.cambio', compact('articulo', 'subcategoria'))}}" title="Cambio de depósito">
+                                        <i class="fas fa-fw fa-store"></i>
+                                    </a>
+
                                     <form action="{{route('articulos.destroy', compact('articulo' , 'subcategoria'))}}" class="formulario-borrar" method="POST" title="Borrar artículo">
                                         @csrf
                                         @method('delete')
