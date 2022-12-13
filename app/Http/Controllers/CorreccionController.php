@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\URL;
 
 class CorreccionController extends Controller
 {
-    public function index(){
+    /*public function index(){
         $articulos = Article::orderBy('id','desc');
         return view('correccion.index', compact('articulos'));
-    }
+    }*/
 
     public function edit(Article $articulo){
         Session::put('url.intended', URL::previous());

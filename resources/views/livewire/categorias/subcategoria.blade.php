@@ -1,8 +1,11 @@
 <div>
-    <a class="btn btn-primary" href="{{route('ingreso.create', compact('categoria', 'subcategoria'))}}">
-        Ingresar nuevo artículo
-        <i class="fas fa-fw fa-plus"></i>
-    </a>
+    @can('ingreso.create')
+        <a class="btn btn-primary" href="{{route('ingreso.create', compact('categoria', 'subcategoria'))}}">
+            Ingresar nuevo artículo
+            <i class="fas fa-fw fa-plus"></i>
+        </a>
+    @endcan
+    
     <div class="card">
         <div class="card-header">
 
@@ -48,27 +51,36 @@
                                     <a class="mx-1" href="{{route('articulos.show', compact('articulo'))}}" title="Ver articulo">
                                         <i class="fas fa-fw fa-info"></i>
                                     </a>
+
                                     <a class="mx-1" href="{{route('ingreso.agregar', compact('articulo'))}}" title="Agregar stock">
                                         <i class="fas fa-fw fa-plus"></i>
                                     </a>
+
                                     <a class="mx-1" href="{{route('egreso.egreso', compact('articulo'))}}" title="Egreso stock">
                                         <i class="fas fa-fw fa-truck"></i>
                                     </a>
-                                    <a class="mx-1" href="{{route('correccion.edit', compact('articulo'))}}" title="Corrección de stock">
-                                        <i class="fas fa-fw fa-pen"></i>
-                                    </a>
 
-                                    <a class="mx-1" href="{{route('articulos.cambio', compact('articulo', 'subcategoria'))}}" title="Cambio de depósito">
-                                        <i class="fas fa-fw fa-store"></i>
-                                    </a>
+                                    @can('correccion.edit')
+                                        <a class="mx-1" href="{{route('correccion.edit', compact('articulo'))}}" title="Corrección de stock">
+                                            <i class="fas fa-fw fa-pen"></i>
+                                        </a>
+                                    @endcan
 
-                                    <form action="{{route('articulos.destroy', compact('articulo' , 'subcategoria'))}}" class="formulario-borrar" method="POST" title="Borrar artículo">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-xs text-danger" type="submit">
-                                            <i class="fa fa-lg fa-fw fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    @can('articulos.cambio')
+                                        <a class="mx-1" href="{{route('articulos.cambio', compact('articulo', 'subcategoria'))}}" title="Cambio de depósito">
+                                            <i class="fas fa-fw fa-store"></i>
+                                        </a>                                        
+                                    @endcan
+
+                                    @can('articulos.destroy')
+                                        <form action="{{route('articulos.destroy', compact('articulo' , 'subcategoria'))}}" class="formulario-borrar" method="POST" title="Borrar artículo">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-xs text-danger" type="submit">
+                                                <i class="fa fa-lg fa-fw fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    @endcan
                                     
                                 </td>
                             </tr>

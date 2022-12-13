@@ -7,14 +7,18 @@
             Sub Categoría seleccionada: {{$subcategoria->nombre}}
     </h1>
     <br>
-    <form action="{{route('categorias.borrar_sub', compact('categoria', 'subcategoria'))}}" class="formulario-eliminar" method="POST">
-        @csrf
-        @method('delete')
-        <button class="btn btn-danger" type="submit">
-            Eliminar Sub Categoría
-            <i class="fas fa-fw fa-trash"></i>
-        </button>
-    </form>
+
+    @can('categorias.borrar_sub')
+        <form action="{{route('categorias.borrar_sub', compact('categoria', 'subcategoria'))}}" class="formulario-eliminar" method="POST">
+            @csrf
+            @method('delete')
+            <button class="btn btn-danger" type="submit">
+                Eliminar Sub Categoría
+                <i class="fas fa-fw fa-trash"></i>
+            </button>
+        </form>        
+    @endcan
+
     <br>
     <h3>Artículos</h2>
 @stop

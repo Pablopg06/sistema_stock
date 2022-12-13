@@ -1,8 +1,11 @@
 <div>
-    <a class="btn btn-primary" href="{{route('categorias.create')}}">
-        Crear nueva Categoría
-        <i class="fas fa-fw fa-plus"></i>
-    </a>
+
+    @can('categorias.create')
+        <a class="btn btn-primary" href="{{route('categorias.create')}}">
+            Crear nueva Categoría
+            <i class="fas fa-fw fa-plus"></i>
+        </a>
+    @endcan
     <p>Estas son las categorías disponibles</p>
     <div class="container text-center">
         <div class="row">

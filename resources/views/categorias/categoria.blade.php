@@ -6,21 +6,28 @@
     <h1 class="uppercase text-center text-3x1 font-bold">
             Categoría seleccionada: {{$categoria->nombre}}
     </h1>
-    <form action="{{route('categorias.destroy', $categoria)}}" class="formulario-eliminar" method="POST">
-        @csrf
-        @method('delete')
-        <button class="btn btn-danger" type="submit">
-            Eliminar Categoría
-            <i class="fas fa-fw fa-trash"></i>
-        </button>
-    </form>
+
+    @can('categorias.destroy')
+        <form action="{{route('categorias.destroy', $categoria)}}" class="formulario-eliminar" method="POST">
+            @csrf
+            @method('delete')
+            <button class="btn btn-danger" type="submit">
+                Eliminar Categoría
+                <i class="fas fa-fw fa-trash"></i>
+            </button>
+        </form>        
+    @endcan
+
     <br>
     <h3>Subcategorías</h2>
     <br>
-    <a class="btn btn-primary" href="{{route('categorias.crear_sub', compact('categoria'))}}">
-        Crear nueva Sub Categoría
-        <i class="fas fa-fw fa-plus"></i>
-    </a>
+
+    @can('categorias.crear_sub')
+        <a class="btn btn-primary" href="{{route('categorias.crear_sub', compact('categoria'))}}">
+            Crear nueva Sub Categoría
+            <i class="fas fa-fw fa-plus"></i>
+        </a>
+    @endcan
 @stop
 
 @section('content')
