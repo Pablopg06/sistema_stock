@@ -15,7 +15,7 @@
         <div class="card-body">
             <table class="table table-stripped">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Artículos</th>
                         <th>Proveedor</th>
                         <th>Stock Disponible</th>
@@ -24,7 +24,7 @@
                 </thead>
                 <tbody>
                     @foreach ($alertas as $alerta)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{$alerta->nombre}}</td>
                             <td>{{$alerta->proveedor}}</td>
                             <td>{{$alerta->stock}}</td>

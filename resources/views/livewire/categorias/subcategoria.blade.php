@@ -39,7 +39,7 @@
                     </thead>
                     <tbody>
                         @foreach ($articles as $articulo)
-                            <tr>
+                            <tr class="text-center">
                                 <td><img src="{{$articulo->foto}}" alt="" borde=3 height=100 width=100></td>
                                 <td>{{$articulo->nombre}}</td>
                                 <td>{{$articulo->stock}}</td>

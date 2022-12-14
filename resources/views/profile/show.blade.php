@@ -39,9 +39,12 @@
             @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
                 <x-jet-section-border />
 
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.delete-user-form')
-                </div>
+                @can('current-user.destroy')
+                    <div class="mt-10 sm:mt-0">
+                        @livewire('profile.delete-user-form')
+                    </div>
+                @endcan
+
             @endif
         </div>
     </div>
