@@ -12,7 +12,7 @@
             @if ($alertas->count())
                 <div class="alert alert-danger" role="alert">
                     Hay artículos que necesitan reposición de stock
-                    <a class="btn btn-light text-dark" href="{{route('articulos.reposicion', compact('subcategoria'))}}">Ver artículos</a>
+                    <a class="btn btn-light text-dark mx-4" href="{{route('articulos.reposicion', compact('subcategoria'))}}">Ver artículos</a>
                 </div>
                 
             @endif

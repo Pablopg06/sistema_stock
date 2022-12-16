@@ -1,25 +1,25 @@
 @extends('adminlte::page')
 
-@section('title', 'Categorias')
+@section('title', 'Informe Ingresos')
 
 @section('content_header')
     <h1>
         <strong>
-            Categorias
+            Historial de Ingresos
         </strong>
     </h1>
 @stop
 
 @section('content')
-    <p>Bienvenidos a la sección de Categorías.</p>
+    
+    @livewire('informes.ingresos')
+
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-    @livewireStyles
 @stop
 
 @section('js')
-    <script> console.log('Categorias!'); </script>
-    @livewireScripts
+    <script> console.log('Informe Ingresos'); </script>
 @stop

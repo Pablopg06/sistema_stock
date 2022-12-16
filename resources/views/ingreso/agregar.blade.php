@@ -21,10 +21,31 @@
         <br>
 
         <label class="form-control">
-            Cantidad que desea ingresar:
+            Cantidad que ingresa:
             <input type="number" name="stock_ingresado">
         </label>
         <br>
+
+        <label>
+            ¿Es reingreso?
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="reingreso" id="reingreso1" value="Si" onclick="showHide(this.value)">
+                <label class="form-check-label" for="reingreso1">
+                Si
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="reingreso" id="reingreso2" value="No" onclick="showHide(this.value)">
+                <label class="form-check-label" for="reingreso2">
+                No
+                </label>
+            </div>
+        </label class="form-control">
+        
+        <div class="form-group">
+            <label for="motivo"></label>
+            <textarea class="form-control" name="motivo" id="motivo" rows="5" placeholder="Escriba el motivo del reingreso" value="" style="display:none"></textarea>
+        </div>
 
         <button type="submit" class="btn btn-primary">Ingresar stock</button>
         <br>
@@ -40,4 +61,20 @@
 
 @section('js')
     <script> console.log('Ingreso de stock'); </script>
+
+    <script>
+
+        function showHide(elm) {
+
+
+            if (elm == "Si") {
+                //display textbox
+                document.getElementById('motivo').style.display = "block";
+            } else {
+                //hide textbox
+                document.getElementById('motivo').style.display = "none";
+            }
+
+        }
+    </script>
 @stop

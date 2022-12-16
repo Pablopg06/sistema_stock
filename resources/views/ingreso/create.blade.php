@@ -179,6 +179,8 @@
         </div>
     </form>
 
+    <a class="btn btn-primary" href="{{url()->previous()}}">Volver</a>
+
 @stop
 
 @section('css')

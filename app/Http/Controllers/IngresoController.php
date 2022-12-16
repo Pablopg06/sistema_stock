@@ -6,7 +6,9 @@ use App\Http\Requests\StoreArticulo;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Ingreso;
 use App\Models\SubCategory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
@@ -60,6 +62,25 @@ class IngresoController extends Controller
         
         $articulo->stock += $request->stock_ingresado;
         $articulo->save();
+        var_dump($request->stock_ingresado);
+        var_dump($request->reingreso);
+        var_dump($request->motivo);
+        
+        $ingreso = Ingreso::create();
+        $ingreso->cantidad = $request->stock_ingresado;
+        $ingreso->reingreso = $request->reingreso;
+        if(!$request->motivo){
+            $ingreso->motivo = "";
+        }else{
+            $ingreso->motivo = $request->motivo;
+        }
+        
+        $ingreso->article_id = $articulo->id;
+        $ingreso->usuario = Auth::user()->name;
+        
+        $ingreso->save();
+
+        
         return Redirect::intended('/');
     }
 }

@@ -15,6 +15,11 @@
         @csrf
 
         <label class="form-control" >
+            Depósito donde se encuentra disponible: {{$articulo->deposito}}
+        </label>
+        <br>
+
+        <label class="form-control" >
             Cantidad disponible de stock: {{$articulo->stock}}
         </label>
         <br>

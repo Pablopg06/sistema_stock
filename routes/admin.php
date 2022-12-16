@@ -8,6 +8,7 @@ use App\Http\Controllers\EgresoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\ArticulosController;
+use App\Http\Controllers\InformesController;
 use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,9 +44,6 @@ Route::middleware([
     });
     
     Route::controller(IngresoController::class)->group(function(){
-        //Route::get('/ingreso','opciones')->name('ingreso.opciones');
-        //Route::get('/ingreso/manual','manual')->name('ingreso.manual');
-        //Route::get('/ingreso/lector', 'lector')->name('ingreso.lector');
         Route::get('/ingreso/create/{categoria?}/{subcategoria?}', 'create')->name('ingreso.create');
         Route::post('/ingreso/store/', 'store')->name('ingreso.store');
         Route::get('/ingreso/agregar/{articulo}', 'agregar')->name('ingreso.agregar');
@@ -58,9 +56,13 @@ Route::middleware([
     });
 
     Route::controller(CorreccionController::class)->group(function(){
-        //Route::get('/correccion', 'index')->name('correccion.index');
         Route::get('/correccion/editar/{articulo}', 'edit')->name('correccion.edit');
         Route::put('/correccion/actualizar/{articulo}', 'update')->name('correccion.update');
+    });
+
+    Route::controller(InformesController::class)->group(function(){
+        Route::get('/informes/ingresos', 'ingresos')->name('informes.ingresos');
+        Route::get('/informes/egresos', 'egresos')->name('informes.egresos');
     });
 
 });

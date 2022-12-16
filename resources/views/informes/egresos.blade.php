@@ -1,17 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'Egreso artículos')
+@section('title', 'Informe Egresos')
 
 @section('content_header')
     <h1>
         <strong>
-            Sección de egreso de artículos
+            Historial de Egresos
         </strong>
     </h1>
 @stop
 
 @section('content')
-    @livewire('movimientos.egreso')
+    
+    @livewire('informes.egresos')
 
 @stop
 
@@ -20,5 +21,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Egreso'); </script>
+    <script> console.log('Informe Egresos'); </script>
 @stop

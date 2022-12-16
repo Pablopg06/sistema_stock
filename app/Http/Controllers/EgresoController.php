@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Egreso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
@@ -18,13 +20,15 @@ class EgresoController extends Controller
     public function salida(Request $request, Article $articulo){
 
         $articulo->stock -= $request->stock_egresado;
-        /*if ($articulo->stock < 5) {
-            
-        } else {
-            # code...
-        }*/
-        
         $articulo->save();
+
+        $egreso = Egreso::create();
+        $egreso->cantidad = $request->stock_egresado;
+        $egreso->vendedor = Auth::user()->name;
+        $egreso->article_id = $articulo->id;
+        
+        $egreso->save();
+
         return Redirect::intended('/');
     }
 }

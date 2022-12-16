@@ -63,7 +63,6 @@ return [
     |
     */
 
-    //'logo' => '<b>Sistema </b>de Stock',
     'logo' => '<b>Stock</b>',
     'logo_img' => 'http://localhost/img/serralogo.jpg',
     //'logo_img_class' => 'brand-image img-circle elevation-3',
@@ -328,6 +327,22 @@ return [
                     'route' => 'articulos.index',
                     'icon' => 'fas fa-fw fa-chair'
 
+                ],
+            ],
+        ],
+        [
+            'text' => 'Informes',
+            'icon' => 'fas fa-fw fa-book',
+            'submenu' => [
+                [
+                    'text' => 'Ingresos',
+                    'route' => 'informes.ingresos',
+                    'icon' => 'fas fa-fw fa-plus'
+                ],
+                [
+                    'text' => 'Egresos',
+                    'route' => 'informes.egresos',
+                    'icon' => 'fas fa-fw fa-minus'
                 ],
             ],
         ],
