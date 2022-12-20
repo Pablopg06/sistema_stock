@@ -39,7 +39,7 @@ class IngresoController extends Controller
         $articulo->subcategory_id = $subcategoria->id;
         $file = $request->file('foto');
         $filename = $file->getClientOriginalName();
-        move_uploaded_file(public_path('/img/'),$filename);
+        move_uploaded_file($filename, public_path('/img/'));
         $url = env('APP_URL').'/img/'.$filename;
         $articulo->foto = $url;
         $articulo->save();

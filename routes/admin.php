@@ -22,6 +22,7 @@ Route::middleware([
         Route::get('/articulos', 'index')->name('articulos.index');
         Route::get('/articulos/show/{articulo}', 'show')->name('articulos.show');
         Route::get('/articulos/reposicion/{subcategoria?}', 'reposicion')->name('articulos.reposicion');
+        Route::get('/articulos/reposicion/pedido', 'pedido')->name('articulos.pedidos');
         Route::delete('/articulos/borrar/{articulo}/{subcategoria?}', 'destroy')->name('articulos.destroy');
         Route::get('articulos/cambio-deposito/{articulo}/{subcategoria?}', 'cambio')->name('articulos.cambio');
         Route::post('articulos/deposito/{articulo}', 'deposito')->name('articulos.deposito');

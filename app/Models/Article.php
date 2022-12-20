@@ -30,4 +30,9 @@ class Article extends Model
     public function store(){
         return $this->belongsToMany('App\Models\Store');
     }
+
+    //Relacion uno a muchos inversa
+    /*public function provider(){
+        return $this->belongsTo(Provider::class);
+    }*/
 }
