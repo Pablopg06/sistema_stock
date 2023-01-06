@@ -16,84 +16,117 @@
         <div class="mb-3">
             @csrf
 
-            <label class="form-label">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre artículo" value="{{old('nombre')}}">
+            </div>
+
+            {{--<label class="form-label w-full">
                 Nombre Artículo:
                 <input type="text" class="form-control" name="nombre" value="{{old('nombre')}}">
-            </label>
+            </label>--}}
 
             @error('nombre')
                 <br>
                 <small>*{{$message}}</small>
                 <br> 
             @enderror
-            <br>
 
-            <label class="form-label">
+            <div class="mb-3">
+                <label for="proveedor" class="form-label">Proveedor</label>
+                <input type="text" class="form-control" id="proveedor" name="proveedor" placeholder="Proveedor del artículo" value="{{old('proveedor')}}">
+            </div>
+
+            {{--<label class="form-label w-full">
                 Proveedor:
                 <input type="text" class="form-control" name="proveedor" value="{{old('proveedor')}}">
-            </label>
+            </label>--}}
 
             @error('proveedor')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
             @enderror
-            <br>
 
-            <label class="form-label">
+            <div class="mb-3">
+                <label for="codigo" class="form-label">Codigo</label>
+                <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Código artículo" value="{{old('codigo')}}">
+            </div>
+
+            {{--<label class="form-label w-full">
                 Código:
                 <input type="number" class="form-control" name="codigo" value="{{old('codigo')}}">
-            </label>
+            </label>--}}
 
             @error('codigo')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
             @enderror
-            <br>
 
-            <label class="form-label">
+            <div class="mb-3">
+                <label for="foto" class="form-label">Imagen</label>
+                <input class="form-control" type="file" id="foto" name="foto">
+            </div>
+
+            {{--<label class="form-label w-full">
                 Imagen:
                 <input type="file" name="foto">
-            </label>
+            </label>--}}
 
-            <br>
+            <div class="mb-3">
+                <label for="marca" class="form-label">Marca</label>
+                <input type="text" class="form-control" id="marca" name="marca" placeholder="Marca artículo" value="{{old('marca')}}">
+            </div>            
 
-            <label class="form-label">
+            {{--<label class="form-label w-full">
                 Marca:
                 <input type="text" class="form-control" name="marca" value="{{old('marca')}}">
-            </label>
+            </label>--}}
 
             @error('marca')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
             @enderror
-            <br>
 
-            <label class="form-label">
+            <div class="mb-3">
+                <label for="stock" class="form-label">Unidades que ingresan</label>
+                <input type="number" class="form-control" id="stock" name="stock" placeholder="Número de artículos que entran" value="{{old('stock')}}">
+            </div>
+
+            {{--<label class="form-label w-full">
                 Unidades que ingresan:
                 <input type="number" class="form-control" name="stock" value="{{old('stock')}}">
-            </label>
+            </label>--}}
 
             @error('stock')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
             @enderror
-            <br>
 
-            <label class="form-label">
+            @if ()
+                
+            @else
+                
+            @endif
+
+            <div class="mb-3">
+                <label for="stock_minimo" class="form-label">Punto de pedido del artículo</label>
+                <input type="number" class="form-control" id="stock_minimo" name="stock_minimo" placeholder="Número de stock a partir del cual se realiza pedido de reposición" value="{{old('stock')}}">
+            </div>
+
+            {{--<label class="form-label w-full">
                 Punto de pedido del artículo:
                 <input type="number" class="form-control" name="stock_minimo" value="{{old('stock_minimo')}}">
-            </label>
+            </label>--}}
 
             @error('stock_minimo')
                 <br>
                 <small>*{{$message}}</small>
                 <br>
             @enderror
-            <br>
 
             <label class="form-label">
                 Depósito:
@@ -110,6 +143,7 @@
                 <small>*{{$message}}</small>
                 <br>
             @enderror
+            <br>
             <br>
             
             @if ($categorias instanceof \Illuminate\Database\Eloquent\Model)
@@ -173,7 +207,6 @@
                 <br>
             @endif
 
-            <br>
             <button type="submit" class="btn btn-primary">Ingresar artículo</button>
             <br>
         </div>

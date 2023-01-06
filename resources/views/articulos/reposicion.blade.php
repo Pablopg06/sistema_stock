@@ -23,24 +23,31 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     @foreach ($alertas as $alerta)
                         <tr class="text-center">
                             <td>{{$alerta->nombre}}</td>
-                            <td>{{$alerta->proveedor}}</td>
+                            @php
+                                $proveedor = $proveedores->find($alerta->provider_id);
+                            @endphp
+                            <td>{{$proveedor->nombre}}</td>
                             <td>{{$alerta->stock}}</td>
                             <td>
                                 {{$alerta->deposito}}
                             </td>
-                            <td>
-                                <a class="btn btn-primary" href="">Realizar pedido</a>
-                            </td>
+                                {{--<td>
+                                    <a class="btn btn-primary" href="">Realizar pedido</a>
+                                </td>--}}
 
                         </tr>
                     @endforeach
+                    
                 </tbody>
             </table>
         </div>
     </div>
+    
+
     <a class="btn btn-primary" href="{{url()->previous()}}">Volver</a>
 
 @stop

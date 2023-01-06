@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\ArticulosController;
 use App\Http\Controllers\InformesController;
+use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,10 @@ Route::middleware([
     Route::controller(ArticulosController::class)->group(function(){
         Route::get('/articulos', 'index')->name('articulos.index');
         Route::get('/articulos/show/{articulo}', 'show')->name('articulos.show');
-        Route::get('/articulos/reposicion/{subcategoria?}', 'reposicion')->name('articulos.reposicion');
-        Route::get('/articulos/reposicion/pedido', 'pedido')->name('articulos.pedidos');
+        Route::get('/articulos/editar/{articulo}/{volver}', 'edit')->name('articulos.edit');
+        Route::put('/articulos/update/{articulo}', 'update')->name('articulos.update');
+        Route::get('/articulos/reposicion/{danger}/{warning}', 'reposicion')->name('articulos.reposicion');
+        Route::get('/articulos/reposicion/pedidos/{proveedor}', 'pedidos')->name('articulos.pedidos');
         Route::delete('/articulos/borrar/{articulo}/{subcategoria?}', 'destroy')->name('articulos.destroy');
         Route::get('articulos/cambio-deposito/{articulo}/{subcategoria?}', 'cambio')->name('articulos.cambio');
         Route::post('articulos/deposito/{articulo}', 'deposito')->name('articulos.deposito');
@@ -32,6 +35,8 @@ Route::middleware([
         Route::get('/categorias','index')->name('categorias.index');
         Route::get('/categorias/crear', 'create')->name('categorias.create');
         Route::post('/categorias/guardar', 'store')->name('categorias.store');
+        Route::get('/categorias/editar/{categoria}', 'edit')->name('categorias.edit');
+        Route::put('/categorias/actualizar/{categoria}', 'update')->name('categorias.update');
         //Categoría seleccionada
         Route::get('/categorias/categoria/{categoria}','categoria')->name('categorias.categoria');
         Route::delete('/categorias/categoria/borrar/{categoria}', 'destroy')->name('categorias.destroy');
@@ -64,6 +69,12 @@ Route::middleware([
     Route::controller(InformesController::class)->group(function(){
         Route::get('/informes/ingresos', 'ingresos')->name('informes.ingresos');
         Route::get('/informes/egresos', 'egresos')->name('informes.egresos');
+    });
+
+    Route::controller(ProveedoresController::class)->group(function(){
+        Route::get('/proveedores/indice', 'index')->name('proveedores.index');
+        Route::get('/proveedores/agregar-info/{proveedor}', 'edit')->name('proveedores.edit');
+        Route::put('/proveedores/actualizar/{proveedor}', 'update')->name('proveedores.update');
     });
 
 });

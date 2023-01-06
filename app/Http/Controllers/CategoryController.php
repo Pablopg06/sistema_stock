@@ -40,13 +40,33 @@ class CategoryController extends Controller
 
     public function store(StoreCategoria $request){
         $categoria = Category::create($request->all());
-        $file = $request->file('imagen');
-        $filename = $file->getClientOriginalName();
-        move_uploaded_file(public_path('/img/'),$filename);
-        $url = env('APP_URL').'/img/'.$filename;
+        $imagen = $request->file('imagen');
+        $nombre_imagen = $imagen->getClientOriginalName();
+        $ruta = public_path("/storage/");
+        copy($imagen->getRealPath(), $ruta.$nombre_imagen);
+        $url = env('APP_URL') . '/public/storage/' . $nombre_imagen;
         $categoria->imagen = $url;
         $categoria->save();
         return redirect()->route('categorias.index');
+    }
+
+    public function edit(Category $categoria){
+        return view('categorias.edit', compact('categoria'));
+    }
+
+    public function update(Request $request, Category $categoria){
+        $categoria->update($request->all());
+        if($request->imagen){
+            $imagen = $request->file('imagen');
+            $nombre_imagen = $imagen->getClientOriginalName();
+            $ruta = public_path("/storage/");
+            copy($imagen->getRealPath(), $ruta.$nombre_imagen);
+            $url = env('APP_URL') . '/public/storage/' . $nombre_imagen;
+            $categoria->imagen = $url;
+            $categoria->save();
+        }
+
+        return redirect()->route('categorias.categoria', compact('categoria'));
     }
 
     public function destroy(Category $categoria){

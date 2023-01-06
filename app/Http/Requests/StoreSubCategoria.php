@@ -25,6 +25,8 @@ class StoreSubCategoria extends FormRequest
     {
         return [
             'nombre'=>'required|max:30',
+            'punto_subcategoria',
+            'stock_min'
         ];
     }
 }

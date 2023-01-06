@@ -4,7 +4,13 @@
 
 @section('content_header')
     <h1 class="uppercase text-center text-3x1 font-bold">
+        <div class="center" style="display: flex">
             Categoría seleccionada: {{$categoria->nombre}}
+
+            <a class="btn btn-primary" href="{{route('categorias.edit', compact('categoria'))}}" title="Editar Categoría">
+                <i class="fas fa-fw fa-pen"></i>
+            </a>
+        </div>
     </h1>
 
     @can('categorias.destroy')
@@ -20,7 +26,6 @@
 
     <br>
     <h3>Subcategorías</h2>
-    <br>
 
     @can('categorias.crear_sub')
         <a class="btn btn-primary" href="{{route('categorias.crear_sub', compact('categoria'))}}">

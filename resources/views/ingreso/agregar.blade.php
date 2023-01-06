@@ -46,6 +46,23 @@
             <label for="motivo"></label>
             <textarea class="form-control" name="motivo" id="motivo" rows="5" placeholder="Escriba el motivo del reingreso" value="" style="display:none"></textarea>
         </div>
+        <div id="usado" style="display: none">
+            <label>
+                ¿Ha sido usado por más de 1 mes?
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="usado" id="usado1" value="Si">
+                    <label class="form-check-label" for="usado1">
+                    Si
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="usado" id="usado2" value="No">
+                    <label class="form-check-label" for="usado2">
+                    No
+                    </label>
+                </div>
+            </label class="form-control">
+        </div>
 
         <button type="submit" class="btn btn-primary">Ingresar stock</button>
         <br>
@@ -63,18 +80,22 @@
     <script> console.log('Ingreso de stock'); </script>
 
     <script>
-
+        
         function showHide(elm) {
 
 
             if (elm == "Si") {
                 //display textbox
                 document.getElementById('motivo').style.display = "block";
+                document.getElementById('usado').style.display = "block";
             } else {
                 //hide textbox
                 document.getElementById('motivo').style.display = "none";
+                document.getElementById('usado').style.display = "none";
+
             }
 
         }
+
     </script>
 @stop

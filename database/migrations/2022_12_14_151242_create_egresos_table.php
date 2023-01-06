@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('vendedor')->default('');
             $table->unsignedBigInteger('article_id')->default(1);
 
-            $table->foreign('article_id')->references('id')->on('articles');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
             
             $table->timestamps();
         });

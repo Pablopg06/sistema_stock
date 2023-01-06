@@ -24,10 +24,10 @@ class StoreArticulo extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|max:20',
-            'proveedor'=>'required|max:20',
+            'nombre'=>'required|max:50',
+            'proveedor'=>'max:50',
             'codigo'=>'required',
-            'foto'=>'required',
+            'foto'=>'nullable',
             'marca'=>'required|max:20',
             'stock'=>'required',
             'stock_minimo'=>'required',

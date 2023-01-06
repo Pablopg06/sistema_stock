@@ -15,34 +15,44 @@
         <div class="mb-3">
             @csrf
 
-            <label class="form-label">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre Categoría</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Categoría" value="{{old('nombre')}}">
+            </div>
+
+            {{--<label class="form-label">
                 Nombre Categoría:
                 <input type="text" class="form-control" name="nombre" value="{{old('nombre')}}">
-            </label>
+            </label>--}}
 
             @error('nombre')
                 <br>
                 <small>*{{$message}}</small>
                 <br> 
             @enderror
-            <br>
 
-            <label class="form-label">
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input class="form-control" type="file" id="imagen" name="imagen">
+            </div>
+
+            {{--<label class="form-label">
                 Imagen:
                 <input type="file" name="imagen">
-            </label>
+            </label>--}}
             
             @error('imagen')
                 <br>
                 <small>*{{$message}}</small>
                 <br> 
             @enderror
-            <br>
 
             <button type="submit" class="btn btn-primary">Crear Categoría</button>
             <br>
         </div>
     </form>
+
+    <a class="btn btn-primary" href="{{url()->previous()}}">Volver</a>
 
 @stop
 

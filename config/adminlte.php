@@ -63,10 +63,11 @@ return [
     |
     */
 
-    'logo' => '<b>Stock</b>',
-    'logo_img' => 'http://localhost/img/serralogo.jpg',
+    //'logo' => '<b>Stock</b>',
+    'logo' => '.',
+    'logo_img' => 'http://serra.nodoshub.com/public/storage/serralogo.jpg',
     //'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_class' => 'brand-image elevation-3',
+    'logo_img_class' => 'elevation-3 w-100',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
@@ -346,28 +347,11 @@ return [
                 ],
             ],
         ],
-        /*[
-            'text'      =>  'Movimientos',
-            'icon'        => 'fas fa-fw fa-book',
-            'submenu'   =>  [
-                [
-                    'text' => 'Ingresos',
-                    'route' => 'ingreso.opciones',
-                    'icon' => 'fas fa-fw fa-dolly',
-                ],
-                [
-                    'text' => 'Egresos',
-                    //'route' => 'movimientos.egreso',
-                    'route' => 'egreso',
-                    'icon' => 'fas fa-fw fa-truck',
-                ],
-                [
-                    'text' => 'Corrección stock',
-                    'route' => 'correccion.index',
-                    'icon' => 'fas fa-fw fa-store',
-                ],
-            ]   
-        ],*/
+        [
+            'text' => 'Proveedores',
+            'route' => 'proveedores.index',
+            'icon' => 'fas fa-fw fa-box',
+        ],
         ['header' => 'Administrador de Cuenta'],
         [
             'text' => 'Perfil',

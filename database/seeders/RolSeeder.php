@@ -23,6 +23,7 @@ class RolSeeder extends Seeder
         //Permisos para acciones sobre articulos
         Permission::create(['name' => 'articulos.index'])->syncRoles([$rol1, $rol2, $rol3]);
         Permission::create(['name' => 'articulos.show'])->syncRoles([$rol1, $rol2, $rol3]);
+        Permission::create(['name' => 'articulos.edit'])->assignRole($rol1);
         //Permission::create(['name' => 'articulos.reposicion'])->syncRoles([$rol1, $rol2]);
         Permission::create(['name' => 'articulos.destroy'])->assignRole($rol1);
         Permission::create(['name' => 'articulos.cambio'])->syncRoles([$rol1, $rol2]);
@@ -41,6 +42,8 @@ class RolSeeder extends Seeder
         Permission::create(['name' => 'egreso.egreso'])->syncRoles($rol1, $rol2, $rol3);
 
         Permission::create(['name' => 'correccion.edit'])->syncRoles($rol1, $rol2);
+        //Permisos para Proveedores
+        Permission::create(['name' => 'proveedores.edit'])->assignRole($rol1);
         //Permiso para eliminar perfil
         Permission::create(['name' => 'current-user.destroy'])->assignRole($rol1);
 

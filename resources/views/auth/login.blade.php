@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            {{--<x-jet-authentication-card-logo />--}}
+            {{--<img src="http://serra.nodoshub.com/public/storage/serralogo.jpg" alt="Aqui va una imagen">--}}
+            <img src="http://serra.nodoshub.com/public/storage/serralogo.jpg" alt="Aqui va una imagen" height=250 width=350>
         </x-slot>
 
         <h1 class="display-1 text-center">
@@ -19,9 +20,14 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div>
+            {{--<div>
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            </div>--}}
+
+            <div>
+                <x-jet-label for="name" value="{{ __('Nombre y Apellido') }}" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
             <div class="mt-4">

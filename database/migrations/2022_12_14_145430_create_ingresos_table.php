@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('article_id')->default(1);
             $table->string('usuario')->default('');
 
-            $table->foreign('article_id')->references('id')->on('articles');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
 
             $table->timestamps();
         });

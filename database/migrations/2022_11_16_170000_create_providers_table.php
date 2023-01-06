@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('direccion');
-            $table->string('mail')->unique();
+            $table->string('nombre')->default('');
+            $table->string('direccion')->default('');
+            $table->string('mail')->default('');
             $table->timestamps();
         });
     }

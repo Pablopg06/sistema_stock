@@ -16,9 +16,9 @@ class ProviderSeeder extends Seeder
     public function run()
     {
         Provider::create([
-            'nombre' => 'Sony',
-            'direccion' => 'Libertador 1450 oeste',
-            'mail' => 'sony@gmail.com'
+            'nombre' => 'No definido',
+            'direccion' => '',
+            'mail' => ''
         ]);
         //Provider::factory(10)->create();
     }

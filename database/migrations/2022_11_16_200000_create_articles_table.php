@@ -16,9 +16,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->default('');
-            //$table->string('slug')->default('slug');
-            $table->string('proveedor')->default('');
-            $table->unsignedBigInteger('codigo')->default(0);
+            $table->string('codigo')->default('');
             $table->string('foto')->default('');
             $table->string('filtro')->default('ninguno');
             $table->string('marca')->default('');
@@ -27,8 +25,10 @@ return new class extends Migration
             $table->unsignedBigInteger('stock_minimo')->default(5);
             $table->string('deposito')->default('');
             $table->unsignedBigInteger('subcategory_id')->default(1);
+            $table->unsignedBigInteger('provider_id')->default(1);
 
             $table->foreign('subcategory_id')->references('id')->on('sub_categories')->onDelete('cascade');
+            $table->foreign('provider_id')->references('id')->on('providers');
 
             $table->timestamps();
         });

@@ -10,16 +10,34 @@
     <div class="card">
         <div class="card-header">
 
-            @if ($alertas->count())
+            @if ($urgente->count())
+                @php
+                    $danger = 1;
+                    $warning = 0;
+                @endphp
                 <div class="alert alert-danger" role="alert">
-                    Hay artículos que necesitan reposición de stock
-                    <a class="btn btn-light text-dark mx-4" href="{{route('articulos.reposicion')}}">Ver artículos</a>
+                    Hay artículos que necesitan reposición de stock. No disponibles en otro depósito        
+                    <a class="btn btn-light text-dark mx-4" href="{{route('articulos.reposicion', compact('danger', 'warning'))}}">Ver artículos</a>
+                </div>
+            @endif
+            
+            
+            @if ($advertencia->count())
+                @php
+                    $danger = 0;
+                    $warning = 1;
+                @endphp
+                <div class="alert alert-warning" role="alert">
+                    Hay artículos que necesitan reposición de stock. Disponibles en otro depósito          
+                    <a class="btn btn-light text-dark mx-4" href="{{route('articulos.reposicion', compact('danger', 'warning'))}}">Ver artículos</a>
                 </div>
             @endif
             
 
+            
+
             <div class="px-6 py-4">
-                <input class="form-control w-full" type="text" wire:model="search" placeholder="Ingrese el nombre o el código del artículo"/>
+                <input class="form-control w-full" type="text" wire:model="search" placeholder="Ingrese el nombre, código o proveedor del artículo"/>
             </div>
             
         </div>
@@ -47,7 +65,10 @@
                                 <td><img src="{{$articulo->foto}}" alt="" borde=3 height=100 width=100></td>
                                 <td>{{$articulo->nombre}}</td>
                                 <td>{{$articulo->stock}}</td>
-                                <td>{{$articulo->proveedor}}</td>
+                                @php
+                                    $proveedor = $proveedores->find($articulo->provider_id);
+                                @endphp
+                                <td>{{$proveedor->nombre}}</td>
                                 <td>{{$articulo->codigo}}</td>
                                 <td>{{$articulo->marca}}</td>
                                 <td>{{$articulo->deposito}}</td>
@@ -80,6 +101,15 @@
                                     @can('articulos.cambio')
                                         <a class="mx-1" href="{{route('articulos.cambio', compact('articulo'))}}" title="Cambio de depósito">
                                             <i class="fas fa-fw fa-store"></i>
+                                        </a>
+                                    @endcan
+                                    
+                                    @php
+                                        $volver = 0;
+                                    @endphp
+                                    @can('articulos.edit')
+                                        <a class="mx-1" href="{{route('articulos.edit', compact('articulo', 'volver'))}}" title="Editar articulo">
+                                            <i class="fas fa-fw fa-bars"></i>
                                         </a>
                                     @endcan
 

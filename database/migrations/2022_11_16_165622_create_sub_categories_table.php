@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            //$table->boolean('punto_subcategoria')->default(0);
+            //$table->unsignedBigInteger('stock_min')->default(0);
             $table->unsignedBigInteger('category_id')->default(1);
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

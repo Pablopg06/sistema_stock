@@ -16,7 +16,7 @@ class Article extends Model
         return [
             'nombre' => $this->nombre,
             'codigo' => $this->codigo,
-            'proveedor' => $this->proveedor
+            //'proveedor' => $this->proveedor
         ];
     }
 
@@ -32,7 +32,7 @@ class Article extends Model
     }
 
     //Relacion uno a muchos inversa
-    /*public function provider(){
+    public function provider(){
         return $this->belongsTo(Provider::class);
-    }*/
+    }
 }

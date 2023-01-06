@@ -15,10 +15,14 @@
         Nombre del producto: {{$articulo->nombre}}
     </label>
     <br>
+    @php
+        $proveedor = $proveedores->find($articulo->provider_id)
+    @endphp
     <label class="form-label">
         Proveedor:
     </label>
-    {{$articulo->proveedor}}
+    {{--{{$articulo->proveedor}}--}}
+    {{$proveedor->nombre}}
     <br>
     <label class="form-label">
         Código:

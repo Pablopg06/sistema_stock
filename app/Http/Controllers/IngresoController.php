@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Ingreso;
+use App\Models\Provider;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -34,13 +35,28 @@ class IngresoController extends Controller
     }
 
     public function store(StoreArticulo $request){
-        $articulo = Article::create($request->except('subcategoria', 'categoria','volver'));
-        $subcategoria = SubCategory::where('nombre', $request->subcategoria)->first();
+        $articulo = Article::create($request->except('proveedor', 'subcategoria', 'categoria','volver'));
+        $subcategoria = SubCategory::where('nombre', 'LIKE', $request->subcategoria)->first();
         $articulo->subcategory_id = $subcategoria->id;
-        $file = $request->file('foto');
-        $filename = $file->getClientOriginalName();
-        move_uploaded_file($filename, public_path('/img/'));
-        $url = env('APP_URL').'/img/'.$filename;
+        $proveedor = Provider::where('nombre', $request->proveedor)->first();
+        if($proveedor){
+            $articulo->provider_id = $proveedor->id;
+        }else{
+            if($request->proveedor != ""){
+                $provider = Provider::create();
+                $provider->nombre = $request->proveedor;
+                $provider->save();
+                $articulo->provider_id = $provider->id;
+            }elseif($request->proveedor == ""){
+                $articulo->provider_id = 1;
+            }
+        }
+        $imagen = $request->file('foto');
+        $nombre_imagen = $imagen->getClientOriginalName();
+        $ruta = public_path("/storage/");
+        copy($imagen->getRealPath(), $ruta.$nombre_imagen);
+        $url = env('APP_URL') . '/public/storage/' . $nombre_imagen;
+        //$url = $ruta.$nombre_imagen;
         $articulo->foto = $url;
         $articulo->save();
         
@@ -59,13 +75,41 @@ class IngresoController extends Controller
     }
 
     public function update(Request $request, Article $articulo){
-        
-        $articulo->stock += $request->stock_ingresado;
-        $articulo->save();
-        var_dump($request->stock_ingresado);
-        var_dump($request->reingreso);
-        var_dump($request->motivo);
-        
+
+        if(($request->reingreso == "Si")&&($request->usado == "Si")){
+            $categoria = Category::where('nombre', 'Usados')->first();
+            $subcategoria = SubCategory::where('category_id', $categoria->id)->first();
+            $articulos_usados = Article::where('subcategory_id', $subcategoria->id)->get();
+
+            $existe = Article::where('nombre', $articulo->nombre)
+                            ->where('provider_id', $articulo->provider_id)
+                            ->where('marca', $articulo->marca)
+                            ->where('subcategory_id', $subcategoria->id)->first();
+            if($existe){
+                $existe->stock += $request->stock_ingresado;
+                $existe->save();
+           }else{
+                
+                Article::create([
+                    'nombre' => $articulo->nombre,
+                    'codigo' => $articulo->codigo,
+                    'foto' => $articulo->foto,
+                    'marca' => $articulo->marca,
+                    'stock' => $request->stock_ingresado,
+                    'stock_minimo' => '0',
+                    'deposito' => $articulo->deposito,
+                    'subcategory_id' => $subcategoria->id,
+                    'provider_id' => $articulo->provider_id
+                ]);
+
+           }
+             
+        }else{
+            $articulo->stock += $request->stock_ingresado;
+            $articulo->save();
+            
+        }
+
         $ingreso = Ingreso::create();
         $ingreso->cantidad = $request->stock_ingresado;
         $ingreso->reingreso = $request->reingreso;
@@ -74,12 +118,11 @@ class IngresoController extends Controller
         }else{
             $ingreso->motivo = $request->motivo;
         }
-        
+            
         $ingreso->article_id = $articulo->id;
         $ingreso->usuario = Auth::user()->name;
-        
+            
         $ingreso->save();
-
         
         return Redirect::intended('/');
     }
