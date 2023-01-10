@@ -17,7 +17,7 @@ class SubCategorySeeder extends Seeder
     {
         SubCategory::create([
             'nombre' => 'Usados',
-            'category_id' => '1'
+            'category_id' => '11'
         ]);
         //SubCategory::factory(46)->create();
     }

@@ -47,8 +47,9 @@ class ArticulosController extends Controller
             copy($imagen->getRealPath(), $ruta.$nombre_imagen);
             $url = env('APP_URL') . '/public/storage/' . $nombre_imagen;
             $articulo->foto = $url;
-            $articulo->save();
+            
         }
+        $articulo->save();
         if($request->volver){
             $subcategoria = SubCategory::where('id', $articulo->subcategory_id)->first();
             $categoria = Category::where('id', $subcategoria->category_id)->first();

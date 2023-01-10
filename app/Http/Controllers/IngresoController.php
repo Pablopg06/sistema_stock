@@ -51,13 +51,15 @@ class IngresoController extends Controller
                 $articulo->provider_id = 1;
             }
         }
-        $imagen = $request->file('foto');
-        $nombre_imagen = $imagen->getClientOriginalName();
-        $ruta = public_path("/storage/");
-        copy($imagen->getRealPath(), $ruta.$nombre_imagen);
-        $url = env('APP_URL') . '/public/storage/' . $nombre_imagen;
-        //$url = $ruta.$nombre_imagen;
-        $articulo->foto = $url;
+        if($request->imagen){
+            $imagen = $request->file('foto');
+            $nombre_imagen = $imagen->getClientOriginalName();
+            $ruta = public_path("/storage/");
+            copy($imagen->getRealPath(), $ruta.$nombre_imagen);
+            $url = env('APP_URL') . '/public/storage/' . $nombre_imagen;
+            //$url = $ruta.$nombre_imagen;
+            $articulo->foto = $url;
+        }
         $articulo->save();
         
         if($request->volver){

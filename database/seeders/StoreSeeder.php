@@ -15,6 +15,18 @@ class StoreSeeder extends Seeder
      */
     public function run()
     {
-        Store::factory(3)->create();
+        Store::create([
+            'nombre' => 'ELIZONDO',
+            'direccion' => 'Elizondo 3957 (s) Villa Krause'
+        ]);
+        Store::create([
+            'nombre' => 'SARMIENTO',
+            'direccion' => 'Franklin Rawson 3155 Villa Las Margaritas Rawson'
+        ]);
+        Store::create([
+            'nombre' => 'LEMOS Sucursal',
+            'direccion' => 'Lemos y Dr Ortega Villa Krause'
+        ]);
+
     }
 }

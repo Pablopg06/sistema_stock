@@ -20,6 +20,8 @@ class ProveedoresController extends Controller
 
         $proveedor->direccion = $request->direccion;
         $proveedor->mail = $request->mail;
+        $proveedor->telefono = $request->telefono;
+
         $proveedor->save();
 
         return redirect()->route('proveedores.index');

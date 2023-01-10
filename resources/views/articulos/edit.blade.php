@@ -118,6 +118,23 @@
                 <br>
             @enderror
 
+            <label class="form-label">
+                Depósito:
+                <select class="form-select" name="deposito" value="{{old('deposito', $articulo->deposito)}}">
+                    <option selected>Seleccione el depósito</option>
+                    <option value="ELIZONDO">ELIZONDO</option>
+                    <option value="SARMIENTO">SARMIENTO</option>
+                    <option value="LEMOS Sucursal">LEMOS Sucursal</option>
+                </select>
+            </label>
+
+            @error('deposito')
+                <br>
+                <small>*{{$message}}</small>
+                <br>
+            @enderror
+            <br>
+
             <input type="hidden" name="volver" value="{{$volver}}">
 
             <button type="submit" class="btn btn-primary">Editar artículo</button>

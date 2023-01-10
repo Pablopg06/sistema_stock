@@ -55,4 +55,12 @@
             </div>
         </form>
     </x-jet-authentication-card>
+    
+    <a href="https://e-nodos.com/">Desarrollado por Nodos</a>
+    <img src="http://localhost/sistema_stock/public/storage/logo de NODOS HUB.jpg" height="120" width="120" alt="Aqui va una imagen">
+        
+    </div>
+        
+    
+    
 </x-guest-layout>

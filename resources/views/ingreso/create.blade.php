@@ -106,12 +106,6 @@
                 <br>
             @enderror
 
-            @if ()
-                
-            @else
-                
-            @endif
-
             <div class="mb-3">
                 <label for="stock_minimo" class="form-label">Punto de pedido del artículo</label>
                 <input type="number" class="form-control" id="stock_minimo" name="stock_minimo" placeholder="Número de stock a partir del cual se realiza pedido de reposición" value="{{old('stock')}}">
@@ -132,9 +126,9 @@
                 Depósito:
                 <select class="form-select" name="deposito" value="{{old('deposito')}}">
                     <option selected>Seleccione el depósito</option>
-                    <option value="deposito A">depósito A</option>
-                    <option value="deposito B">depósito B</option>
-                    <option value="deposito C">depósito C</option>
+                    <option value="ELIZONDO">ELIZONDO</option>
+                    <option value="SARMIENTO">SARMIENTO</option>
+                    <option value="LEMOS Sucursal">LEMOS Sucursal</option>
                 </select>
             </label>
 

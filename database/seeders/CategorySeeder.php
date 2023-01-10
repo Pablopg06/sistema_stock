@@ -16,8 +16,37 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
+            'nombre' => 'Audio y Video',
+        ]);
+        Category::create([
+            'nombre' => 'Belleza y Salud',
+        ]);
+        Category::create([
+            'nombre' => 'Colchoneria',
+        ]);
+        Category::create([
+            'nombre' => 'Computacion',
+        ]);
+        Category::create([
+            'nombre' => 'Deportes y Jardin',
+        ]);
+        Category::create([
+            'nombre' => 'Electrohogar',
+        ]);
+        Category::create([
+            'nombre' => 'Herramientas',
+        ]);
+        Category::create([
+            'nombre' => 'Muebles',
+        ]);
+        Category::create([
+            'nombre' => 'Chicos',
+        ]);
+        Category::create([
+            'nombre' => 'Oficina',
+        ]);
+        Category::create([
             'nombre' => 'Usados',
         ]);
-        //Category::factory(10)->create();
     }
 }

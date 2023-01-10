@@ -34,6 +34,12 @@
         </label>
         <br>
 
+        <label class="form-control">
+            Teléfono:
+            <input type="number" name="telefono" value="{{old('telefono', $proveedor->telefono)}}">
+        </label>
+        <br>
+
         <button type="submit" class="btn btn-primary">Editar Información</button>
         <br>
         <br>

@@ -28,10 +28,10 @@ class StoreArticulo extends FormRequest
             'proveedor'=>'max:50',
             'codigo'=>'required',
             'foto'=>'nullable',
-            'marca'=>'required|max:20',
+            'marca'=>'max:20',
             'stock'=>'required',
-            'stock_minimo'=>'required',
-            'deposito'=>'required',
+            'stock_minimo',
+            'deposito',
             'categoria'=>'required',
             'subcategoria'=>'required',
             'volver'

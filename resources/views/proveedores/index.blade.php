@@ -29,6 +29,8 @@
                             <th>Nombre Proveedor</th>
                             <th>Dirección</th>
                             <th>Mail</th>
+                            <th>Teléfono</th>
+                            
                             @can('proveedores.edit')
                                 <th>Acciones</th>
                             @endcan
@@ -41,6 +43,7 @@
                                 <td>{{$proveedor->nombre}}</td>
                                 <td>{{$proveedor->direccion}}</td>
                                 <td>{{$proveedor->mail}}</td>
+                                <td>{{$proveedor->telefono}}</td>
                                 <td>
                                     @can('proveedores.edit')
                                         <a class="mx-1" href="{{route('proveedores.edit', compact('proveedor'))}}" title="Agregar o editar información">

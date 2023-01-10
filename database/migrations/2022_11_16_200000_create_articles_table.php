@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('marca')->default('');
             $table->unsignedBigInteger('stock')->default(0);
             $table->unsignedBigInteger('stock_ideal')->default(0);
-            $table->unsignedBigInteger('stock_minimo')->default(5);
+            $table->unsignedBigInteger('stock_minimo')->default(1);
             $table->string('deposito')->default('');
             $table->unsignedBigInteger('subcategory_id')->default(1);
             $table->unsignedBigInteger('provider_id')->default(1);
